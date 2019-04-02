@@ -39,7 +39,7 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
-        _inputMovement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+        _inputMovement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
 
         if (Input.GetButtonDown("Jump") && !_isJumping)
         {
