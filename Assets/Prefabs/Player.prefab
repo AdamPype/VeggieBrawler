@@ -202,14 +202,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerNumber: 1
   _acceleration: 18
-  _drag: 8
+  _drag: 6
   _maximumXZVelocity: 30
   _jumpHeight: 2
   _groundCollider: {fileID: 4727529448022805223}
   _mapLayerMask:
     serializedVersion: 2
-    m_Bits: 0
-  _inputMovement: {x: 0, y: 0, z: 0}
+    m_Bits: 1
 --- !u!95 &152410255961203901
 Animator:
   serializedVersion: 3

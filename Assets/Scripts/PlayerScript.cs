@@ -28,7 +28,7 @@ public class PlayerScript : MonoBehaviour
 
 
     private Vector3 _velocity = Vector3.zero; // [m/s]
-    public Vector3 _inputMovement = Vector3.zero;
+    private Vector3 _inputMovement = Vector3.zero;
     public Vector3 InputMovement { get =>_inputMovement; }
 
     private bool _jump;
@@ -114,11 +114,11 @@ public class PlayerScript : MonoBehaviour
         float movement = _inputController.GetLeftJoystickHorizontal(_playerNumber);
         if (movement < 0)
         {
-            _transform.eulerAngles = new Vector3(0, -90, 0);
+            _transform.rotation = Quaternion.LookRotation(-_absoluteForward.right);
         }
         else
         {
-            _transform.eulerAngles = new Vector3(0, 90, 0);
+            _transform.rotation = Quaternion.LookRotation(_absoluteForward.right);
         }
 
     }

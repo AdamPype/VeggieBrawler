@@ -29,8 +29,8 @@ public class AnimationsController {
 
     public void Update()
     {
-        _animator.SetFloat(_zMovementAnimationParameter, _player._inputMovement.z);
-        _animator.SetFloat(_xMovementAnimationParameter, _player._inputMovement.x);
+        _animator.SetFloat(_zMovementAnimationParameter, _player.InputMovement.z);
+        _animator.SetFloat(_xMovementAnimationParameter, _player.InputMovement.x);
 
         _animator.SetBool(_isGroundedAnimationParameter, _player.IsGrounded());
         _animator.SetFloat(_distanceFromGroundParameter, _player.GetDistanceFromGround());
