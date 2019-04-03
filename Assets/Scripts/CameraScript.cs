@@ -49,7 +49,8 @@ public class CameraScript : MonoBehaviour
             {
             foreach (Transform item in _objectsToTrack)
                 {
-                bounds.Encapsulate(item.position);
+                if (item)
+                    bounds.Encapsulate(item.position);
                 }
             }
         return bounds.center;
