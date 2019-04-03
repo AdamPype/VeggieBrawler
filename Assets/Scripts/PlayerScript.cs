@@ -8,6 +8,8 @@ using UnityEngine.Assertions;
 public class PlayerScript : MonoBehaviour
 {
 
+    [SerializeField] [Range(1, 2)] private int _playerNumber=1;
+
     [SerializeField] private float _acceleration = 0;
     [SerializeField] private float _drag = 0;
     [SerializeField] private float _maximumXZVelocity = (30 * 1000) / (60 * 60); //[m/s] 30km/h
@@ -19,7 +21,7 @@ public class PlayerScript : MonoBehaviour
     private Transform _transform;
     private Rigidbody _rigidbody;
     //private Animator _anim;
-    //private ControlScript _input;
+    private InputController _inputController = InputController.Instance();
 
 
     private Vector3 _velocity = Vector3.zero; // [m/s]
@@ -39,9 +41,9 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
-        _inputMovement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        _inputMovement = _inputController.GetRightJoystickFromPlayer(_playerNumber);
 
-        if (Input.GetButtonDown("Jump") && !_isJumping)
+        if (_inputController.IsAButtonPressed(_playerNumber) && !_isJumping)
         {
             _jump = true;
         }

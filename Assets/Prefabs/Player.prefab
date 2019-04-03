@@ -198,9 +198,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 787e1a8f7d9d158418dc9bf8a3d254e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _acceleration: 12
-  _drag: 1
-  _maximumXZVelocity: 10
+  _playerNumber: 1
+  _acceleration: 18
+  _drag: 8
+  _maximumXZVelocity: 30
   _jumpHeight: 2
   _groundCollider: {fileID: 4727529448022805223}
 --- !u!54 &4727529448679902255
