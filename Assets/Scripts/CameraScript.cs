@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
+    public static Transform MainCameraTransform { get; private set; }
     //tracking
     [SerializeField] private float _followSpeed;
     [SerializeField] private Vector3 _offset;
@@ -19,6 +20,7 @@ public class CameraScript : MonoBehaviour
     private void Start()
         {
         _cam = transform.Find("Camera");
+        MainCameraTransform = _cam;
         }
 
     // Update is called once per frame

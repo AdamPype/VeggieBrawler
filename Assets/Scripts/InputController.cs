@@ -18,15 +18,20 @@ public class InputController
     
     public Vector3 GetRightJoystickFromPlayer(int controller)
     {
-        float h = Input.GetAxis("C"+ controller + "_RightJoystickX");
+        float h = Input.GetAxis("C" + controller + "_RightJoystickX");
         float v = Input.GetAxis("C" + controller + "_RightJoystickY");
         
         return new Vector3(h,0,v);
     }
 
+    public float GetLeftJoystickHorizontal(int controller)
+    {
+        return Input.GetAxis("C" + controller + "_LeftJoystickX");
+    }
+
     public Vector3 GetLeftJoystickFromPlayer(int controller)
     {
-        float h = Input.GetAxis("C" + controller + "_LeftJoystickX");
+        float h = GetLeftJoystickHorizontal(controller);
         float v = Input.GetAxis("C" + controller + "_LeftJoystickY");
 
         return new Vector3(h, 0, v);
