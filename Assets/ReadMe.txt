@@ -22,6 +22,8 @@ This gameobject will be shown when a player selects this portrait by pressing th
 
 	Character Selecting
 Hovering over a Portrait and pressing "A" will pick that character. When picked, the mouse will be locked.
+When picking a portrait a raycast will be shot downwards from the middle of the MouseUI Elements - It should be put in the top left corner if your sprite implies that.
+^ 
 The player can un-choose their character by pressing "B" this will allow them to move the mouse again and pick a new character.
 
 	Other UI Elements
