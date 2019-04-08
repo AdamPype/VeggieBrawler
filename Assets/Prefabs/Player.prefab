@@ -161,6 +161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4727529448679902253}
   - component: {fileID: 4727529448679902252}
+  - component: {fileID: 7936719069270327822}
   - component: {fileID: 152410255961203901}
   - component: {fileID: 4727529448679902255}
   - component: {fileID: 4727529448679902254}
@@ -195,12 +196,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4727529448679902241}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 787e1a8f7d9d158418dc9bf8a3d254e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _playerNumber: 1
+--- !u!114 &7936719069270327822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4727529448679902241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc6e9922c6e5ce143b8dfc89dba37225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _acceleration: 18
   _drag: 6
   _maximumXZVelocity: 30

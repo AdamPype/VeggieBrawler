@@ -5,7 +5,7 @@ using UnityEngine;
 public class AnimationsController {
 
     private Animator _animator;
-    private PlayerScript _player;
+    private PhysicsController _physicsController;
 
     private int _zMovementAnimationParameter = Animator.StringToHash("ZMovement");
     private int _xMovementAnimationParameter = Animator.StringToHash("XMovement");
@@ -14,32 +14,38 @@ public class AnimationsController {
     private int _distanceFromGroundParameter = Animator.StringToHash("DistanceFromGround");
     private int _verticalVelocityAnimationParameter = Animator.StringToHash("VerticalVelocity");
 
-    private int _punchParameter = Animator.StringToHash("Punch");
+    private int _attackParameter = Animator.StringToHash("Attack");
+    private int _specialAttackParameter = Animator.StringToHash("SpecialAttack");
     private int _takeDamageAnimationParameter = Animator.StringToHash("TakeDamage");
 
     private int _deathParameter = Animator.StringToHash("Die");
     private int _resetParameter = Animator.StringToHash("Reset");
 
 
-    public AnimationsController(Animator animator, PlayerScript player)
+    public AnimationsController(Animator animator, PhysicsController physicsController)
     {
         _animator = animator;
-        _player = player;
+        _physicsController = physicsController;
     }
 
     public void Update()
     {
-        _animator.SetFloat(_zMovementAnimationParameter, _player.InputMovement.z);
-        _animator.SetFloat(_xMovementAnimationParameter, _player.InputMovement.x);
+        _animator.SetFloat(_zMovementAnimationParameter, _physicsController.InputMovement.z);
+        _animator.SetFloat(_xMovementAnimationParameter, _physicsController.InputMovement.x);
 
-        _animator.SetBool(_isGroundedAnimationParameter, _player.IsGrounded());
-        _animator.SetFloat(_distanceFromGroundParameter, _player.GetDistanceFromGround());
-        _animator.SetFloat(_verticalVelocityAnimationParameter, _player.GetVelocity().y);
+        _animator.SetBool(_isGroundedAnimationParameter, _physicsController.IsGrounded());
+        _animator.SetFloat(_distanceFromGroundParameter, _physicsController.GetDistanceFromGround());
+        _animator.SetFloat(_verticalVelocityAnimationParameter, _physicsController.GetVelocity().y);
     }
 
-    public void Punch()
+    public void Attack()
     {
-        _animator.SetTrigger(_punchParameter);
+        _animator.SetTrigger(_attackParameter);
+    }
+
+    public void SpecialAttack()
+    {
+        _animator.SetTrigger(_specialAttackParameter);
     }
 
     public void TakeDamage()
