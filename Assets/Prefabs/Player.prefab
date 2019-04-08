@@ -202,6 +202,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerNumber: 1
+  _maxHealth: 100
+  _flinchTime: 0.5
   _attackDamage: 0
   _attackCooldown: 0.5
   _attackColliders:
@@ -213,7 +215,7 @@ MonoBehaviour:
   _specialAttackColliders:
   - {fileID: 994979344004851625}
   - {fileID: 1937014497765183945}
-  _specialAttackDamageTimeRange: {x: 0, y: 1}
+  _specialAttackDamageTimeRange: {x: 0.5, y: 1}
 --- !u!114 &7936719069270327822
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -189,6 +189,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4727529448679902252, guid: df350dd400f911242b82794e9edc6459,
+        type: 3}
+      propertyPath: _flinchTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727529448679902252, guid: df350dd400f911242b82794e9edc6459,
+        type: 3}
+      propertyPath: _maxHealth
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df350dd400f911242b82794e9edc6459, type: 3}
 --- !u!1 &170076733
@@ -622,8 +632,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4727529448679902252, guid: df350dd400f911242b82794e9edc6459,
         type: 3}
-      propertyPath: _specialAttackDamageTimeRange.x
-      value: 0.5
+      propertyPath: _maxHealth
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df350dd400f911242b82794e9edc6459, type: 3}

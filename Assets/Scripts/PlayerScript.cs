@@ -7,7 +7,10 @@ using UnityEngine.Assertions;
 [RequireComponent(typeof(PhysicsController))]
 public class PlayerScript : MonoBehaviour
 {
+    [Header("General")]
     [SerializeField] [Range(1, 2)] private int _playerNumber=1;
+    [SerializeField] private int _maxHealth = 0;
+    [SerializeField] private float _flinchTime=0;
 
     [Header("Attack fields")]
     [SerializeField] private int _attackDamage=0;
@@ -21,6 +24,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private AttackCollider[] _specialAttackColliders;
     [SerializeField] private Vector2 _specialAttackDamageTimeRange=Vector2.zero;
 
+    public int Health { get; private set; }
 
     private Transform _transform;
     private PhysicsController _physicsController;
@@ -30,6 +34,8 @@ public class PlayerScript : MonoBehaviour
     private float _attackCooldownTimer;
     private float _specialAttackCooldownTimer;
     private Coroutine _generalAttackCoroutine;
+    private float _flinchTimer = 0;
+    private bool _isDead;
 
     void Start()
     {
@@ -38,21 +44,30 @@ public class PlayerScript : MonoBehaviour
         _animator = GetComponent<Animator>();
         _animationsController = new AnimationsController(_animator, _physicsController);
 
+        Health = _maxHealth;
         _attackCooldownTimer = _attackCooldown;
         _specialAttackCooldownTimer = _specialAttackCooldown;
+        _flinchTimer = _flinchTime;
     }
 
     private void Update()
     {
-        _physicsController.InputMovement = new Vector3(InputController.GetHorizontalMovement(_playerNumber), 0, 0);
+        if (_isDead) return;
 
-        if (InputController.IsJumpButtonPressed(_playerNumber) && _physicsController.IsGrounded())
+
+        if (_flinchTimer >= _flinchTime)
         {
-            _physicsController.Jump = true;
-        }
+            _physicsController.InputMovement = new Vector3(InputController.GetHorizontalMovement(_playerNumber), 0, 0);
 
-        TryAttack();
-        TrySpecialAttack();
+            if (InputController.IsJumpButtonPressed(_playerNumber) && _physicsController.IsGrounded())
+            {
+                _physicsController.Jump = true;
+            }
+
+            TryAttack();
+            TrySpecialAttack();
+        }
+        _flinchTimer += Time.deltaTime;
 
         _animationsController.Update();
     }
@@ -158,7 +173,21 @@ public class PlayerScript : MonoBehaviour
         if (_generalAttackCoroutine != null)
             StopCoroutine(_generalAttackCoroutine);
 
+        _flinchTimer = 0;
+
+        _animationsController.TakeDamage();
+        Health -= damage;
+        Die();
         Debug.Log("DAMAGE");
+    }
+
+    private void Die()
+    {
+        if (Health <= 0)
+        {
+            _isDead = true;
+            _animationsController.Die();
+        }
     }
 
     private void OnDrawGizmos()
