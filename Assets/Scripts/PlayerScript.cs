@@ -24,7 +24,6 @@ public class PlayerScript : MonoBehaviour
 
     private Transform _transform;
     private PhysicsController _physicsController;
-    private InputController _inputController = InputController.Instance();
     private Animator _animator;
     private AnimationsController _animationsController;
 
@@ -45,9 +44,9 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
-        _physicsController.InputMovement = new Vector3(_inputController.GetLeftJoystickHorizontal(_playerNumber), 0, 0);
+        _physicsController.InputMovement = new Vector3(InputController.GetHorizontalMovement(_playerNumber), 0, 0);
 
-        if (_inputController.IsAButtonPressed(_playerNumber) && _physicsController.IsGrounded())
+        if (InputController.IsJumpButtonPressed(_playerNumber) && _physicsController.IsGrounded())
         {
             _physicsController.Jump = true;
         }
@@ -60,7 +59,7 @@ public class PlayerScript : MonoBehaviour
 
     private void TryAttack()
     {
-        if (_attackCooldownTimer > _attackCooldown && _inputController.IsXButtonPressed(_playerNumber))
+        if (_attackCooldownTimer > _attackCooldown && InputController.IsAttackButtonPressed(_playerNumber))
         {
             Attack();
         }
@@ -69,7 +68,7 @@ public class PlayerScript : MonoBehaviour
 
     private void TrySpecialAttack()
     {
-        if (_specialAttackCooldownTimer > _specialAttackCooldown && _inputController.IsYButtonPressed(_playerNumber))
+        if (_specialAttackCooldownTimer > _specialAttackCooldown && InputController.IsSpecialAttackButtonPressed(_playerNumber))
         {
             SpecialAttack();
         }

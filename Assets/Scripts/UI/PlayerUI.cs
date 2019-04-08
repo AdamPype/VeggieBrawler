@@ -16,8 +16,6 @@ public class PlayerUI : MonoBehaviour
 
     public GameObject ChosenCharacter;
 
-    private InputController _input = InputController.Instance();
-
     private Vector2 _originalBorderPos;
 
     private List<RaycastResult> _hitElements = new List<RaycastResult>();
@@ -37,12 +35,12 @@ public class PlayerUI : MonoBehaviour
             HideUIElements();
         }
 
-        if(_input.IsAButtonPressed(PlayerNumber))
+        if(InputController.IsAButtonPressed(PlayerNumber))
             ChooseCharacter();
 
         if (ChosenCharacter != null)
         {
-            if (_input.IsBButtonPressed(PlayerNumber))
+            if (InputController.IsBButtonPressed(PlayerNumber))
                 UnLoadCharacter();
             ShowUIElements();
         }
@@ -50,7 +48,7 @@ public class PlayerUI : MonoBehaviour
 
     private void MoveMouse()
     {
-        Mouse.anchoredPosition += new Vector2(_input.GetLeftJoystickFromPlayer(PlayerNumber).x, _input.GetLeftJoystickFromPlayer(PlayerNumber).z) * _csm.MouseMoveSpeed;
+        Mouse.anchoredPosition += new Vector2(InputController.GetLeftJoystickFromPlayer(PlayerNumber).x, InputController.GetLeftJoystickFromPlayer(PlayerNumber).z) * _csm.MouseMoveSpeed;
     }
 
     //Method to check what's under the players mouse

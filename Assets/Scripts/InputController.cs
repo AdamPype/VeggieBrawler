@@ -1,22 +1,41 @@
 ﻿using UnityEngine;
 
-public class InputController 
+public static class InputController 
 {
-    private static InputController _instance;
 
-    public static InputController Instance()
+    public static float GetHorizontalMovement(int controller)
     {
-        if (_instance == null)
-        {
-            _instance = new InputController();
-        }
-
-        return _instance;
+        return Input.GetAxis("C" + controller + "_LeftJoystickX");
     }
 
-    private InputController() { }
-    
-    public Vector3 GetRightJoystickFromPlayer(int controller)
+    public static bool IsJumpButtonPressed(int controller)
+    {
+        return Input.GetButtonDown("C" + controller + "_AButton");
+    }
+
+    public static bool IsAttackButtonPressed(int controller)
+    {
+        return Input.GetButtonDown("C" + controller + "_XButton");
+    }
+
+    public static bool IsSpecialAttackButtonPressed(int controller)
+    {
+        return Input.GetButtonDown("C" + controller + "_YButton");
+    }
+
+    public static bool IsStartButtonPressed(int controller)
+    {
+        return Input.GetButtonDown("C" + controller + "_StartButton");
+    }
+
+    public static bool IsStartButtonPressed()
+    {
+        return Input.GetButtonDown("StartButton");
+    }
+
+
+
+    public static Vector3 GetRightJoystickFromPlayer(int controller)
     {
         float h = Input.GetAxis("C" + controller + "_RightJoystickX");
         float v = Input.GetAxis("C" + controller + "_RightJoystickY");
@@ -24,58 +43,49 @@ public class InputController
         return new Vector3(h,0,v);
     }
 
-    public float GetLeftJoystickHorizontal(int controller)
+    public static Vector3 GetLeftJoystickFromPlayer(int controller)
     {
-        return Input.GetAxis("C" + controller + "_LeftJoystickX");
-    }
-
-    public Vector3 GetLeftJoystickFromPlayer(int controller)
-    {
-        float h = GetLeftJoystickHorizontal(controller);
+        float h = GetHorizontalMovement(controller);
         float v = Input.GetAxis("C" + controller + "_LeftJoystickY");
 
         return new Vector3(h, 0, v);
     }
 
-    public bool IsAButtonPressed(int controller)
+    public static bool IsAButtonPressed(int controller)
     {
         return Input.GetButtonDown("C" + controller + "_AButton");
     }
-    
-    public bool IsBButtonPressed(int controller)
+
+    public static bool IsBButtonPressed(int controller)
     {
         return Input.GetButtonDown("C" + controller + "_BButton");
     }
 
-    public bool IsXButtonPressed(int controller)
+    public static bool IsXButtonPressed(int controller)
     {
         return Input.GetButtonDown("C" + controller + "_XButton");
     }
 
-    public bool IsYButtonPressed(int controller)
+    public static bool IsYButtonPressed(int controller)
     {
         return Input.GetButtonDown("C" + controller + "_YButton");
     }
 
-    public bool IsYButtonHeldDown(int controller)
+    public static bool IsYButtonHeldDown(int controller)
     {
         return Input.GetButton("C" + controller + "_YButton");
     }
 
-    public float GetLeftTriggerFromPlayer(int controller)
+    public static float GetLeftTriggerFromPlayer(int controller)
     {
         return Input.GetAxis("C" + controller + "_LeftTrigger");
     }
 
-    public float GetRightTriggerFromPlayer(int controller)
+    public static float GetRightTriggerFromPlayer(int controller)
     {
         return Input.GetAxis("C" + controller + "_RightTrigger");
     }
 
-    public bool IsStartButtonPressed(int controller)
-    {
-        return Input.GetButtonDown("C" + controller + "_StartButton");
-    }
 }
 
 
