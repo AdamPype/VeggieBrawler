@@ -86,7 +86,7 @@ public class PhysicsController : MonoBehaviour
         {
             _transform.rotation = Quaternion.LookRotation(-_absoluteForward.right);
         }
-        else
+        if (movement > 0)
         {
             _transform.rotation = Quaternion.LookRotation(_absoluteForward.right);
         }
@@ -155,5 +155,16 @@ public class PhysicsController : MonoBehaviour
     public Vector3 GetVelocity()
     {
         return _rigidbody.velocity;
+    }
+
+    public void TakeKnockBack(float power, Vector3 origin)
+    {
+        Vector3 rawDirection = _rigidbody.worldCenterOfMass - origin;
+        float horizontalDistance = Vector3.Scale(rawDirection, new Vector3(1, 0, 1)).magnitude;
+
+        Vector3 direction = _absoluteForward.TransformVector(new Vector3(horizontalDistance, rawDirection.y/2,0)).normalized;
+
+        Debug.Log(direction);
+        _velocity += direction * power;
     }
 }

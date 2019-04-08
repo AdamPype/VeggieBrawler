@@ -7,6 +7,7 @@ public class AttackCollider : MonoBehaviour
 {
     private PlayerScript _player;
     public PlayerScript Opponent { get; private set; }
+    public Vector3 HitOrigin { get=> transform.position; }
 
     private void Start()
     {

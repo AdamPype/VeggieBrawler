@@ -72,8 +72,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.25
-  m_Center: {x: 0, y: 0.12, z: 0}
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 0.15, z: 0}
 --- !u!1 &4727529448421942882
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,6 +204,7 @@ MonoBehaviour:
   _playerNumber: 1
   _maxHealth: 100
   _flinchTime: 0.5
+  _knockbackForce: 10
   _attackDamage: 0
   _attackCooldown: 0.5
   _attackColliders:
@@ -269,7 +270,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 88
   m_CollisionDetection: 0
 --- !u!136 &4727529448679902254
 CapsuleCollider:

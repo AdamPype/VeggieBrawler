@@ -11,6 +11,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] [Range(1, 2)] private int _playerNumber=1;
     [SerializeField] private int _maxHealth = 0;
     [SerializeField] private float _flinchTime=0;
+    [SerializeField] private float _knockbackForce = 10;
 
     [Header("Attack fields")]
     [SerializeField] private int _attackDamage=0;
@@ -24,7 +25,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private AttackCollider[] _specialAttackColliders;
     [SerializeField] private Vector2 _specialAttackDamageTimeRange=Vector2.zero;
 
+    public int MaxHealth { get => _maxHealth; }
     public int Health { get; private set; }
+    public int PlayerNumber { get => _playerNumber; }
 
     private Transform _transform;
     private PhysicsController _physicsController;
@@ -129,7 +132,7 @@ public class PlayerScript : MonoBehaviour
                 PlayerScript opponent = attackCollider.Opponent;
                 if (opponent != null)
                 {
-                    opponent.TakeDamage(_attackDamage);
+                    opponent.TakeDamage(_attackDamage, attackCollider.HitOrigin);
                     timer = _attackDamageTimeRange.y;
                     break;
                 }
@@ -157,7 +160,7 @@ public class PlayerScript : MonoBehaviour
                 PlayerScript opponent = specialAttackCollider.Opponent;
                 if (opponent != null)
                 {
-                    opponent.TakeDamage(_specialAttackDamage);
+                    opponent.TakeDamage(_specialAttackDamage, specialAttackCollider.HitOrigin);
                     timer = _specialAttackDamageTimeRange.y;
                     break;
                 }
@@ -168,13 +171,13 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, Vector3 origin)
     {
         if (_generalAttackCoroutine != null)
             StopCoroutine(_generalAttackCoroutine);
 
         _flinchTimer = 0;
-
+        _physicsController.TakeKnockBack(_knockbackForce, origin);
         _animationsController.TakeDamage();
         Health -= damage;
         Die();
