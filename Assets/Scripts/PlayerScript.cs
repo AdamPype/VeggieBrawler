@@ -42,6 +42,7 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
+        gameObject.layer = LayerMask.NameToLayer("Player");
         _transform = transform;
         _physicsController = GetComponent<PhysicsController>();
         _animator = GetComponent<Animator>();
@@ -60,15 +61,19 @@ public class PlayerScript : MonoBehaviour
 
         if (_flinchTimer >= _flinchTime)
         {
-            _physicsController.InputMovement = new Vector3(InputController.GetHorizontalMovement(_playerNumber), 0, 0);
-
-            if (InputController.IsJumpButtonPressed(_playerNumber) && _physicsController.IsGrounded())
+            if(_generalAttackCoroutine == null)
             {
-                _physicsController.Jump = true;
+                _physicsController.InputMovement = new Vector3(InputController.GetHorizontalMovement(_playerNumber), 0, 0);
+
+                if (InputController.IsJumpButtonPressed(_playerNumber) && _physicsController.IsGrounded())
+                {
+                    _physicsController.Jump = true;
+                }
+
+                TryAttack();
+                TrySpecialAttack();
             }
 
-            TryAttack();
-            TrySpecialAttack();
         }
         _flinchTimer += Time.deltaTime;
 
@@ -141,6 +146,8 @@ public class PlayerScript : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
+
+        _generalAttackCoroutine = null;
     }
 
     private IEnumerator TrySpecialAttackDamageOpponent()
@@ -169,6 +176,8 @@ public class PlayerScript : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
+
+        _generalAttackCoroutine = null;
     }
 
     public void TakeDamage(int damage, Vector3 origin)
@@ -189,6 +198,7 @@ public class PlayerScript : MonoBehaviour
         if (Health <= 0)
         {
             _isDead = true;
+            gameObject.layer = LayerMask.NameToLayer("NoCollisionWithPlayer");
             _animationsController.Die();
         }
     }

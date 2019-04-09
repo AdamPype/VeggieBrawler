@@ -162,6 +162,9 @@ public class PhysicsController : MonoBehaviour
         Vector3 rawDirection = _rigidbody.worldCenterOfMass - origin;
         float horizontalDistance = Vector3.Scale(rawDirection, new Vector3(1, 0, 1)).magnitude;
 
+        if (_absoluteForward.TransformVector(rawDirection).x < 0)
+            horizontalDistance = -horizontalDistance;
+
         Vector3 direction = _absoluteForward.TransformVector(new Vector3(horizontalDistance, rawDirection.y/2,0)).normalized;
 
         Debug.Log(direction);
