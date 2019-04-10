@@ -34,8 +34,8 @@ public class PlayerScript : MonoBehaviour
     private Animator _animator;
     private AnimationsController _animationsController;
 
-    private float _attackCooldownTimer;
-    private float _specialAttackCooldownTimer;
+    public float AttackCooldownTimer { get; set; }
+    public float SpecialAttackCooldownTimer { get; set; }
     private Coroutine _generalAttackCoroutine;
     private float _flinchTimer = 0;
     private bool _isDead;
@@ -49,8 +49,8 @@ public class PlayerScript : MonoBehaviour
         _animationsController = new AnimationsController(_animator, _physicsController);
 
         Health = _maxHealth;
-        _attackCooldownTimer = _attackCooldown;
-        _specialAttackCooldownTimer = _specialAttackCooldown;
+        AttackCooldownTimer = _attackCooldown;
+        SpecialAttackCooldownTimer = _specialAttackCooldown;
         _flinchTimer = _flinchTime;
     }
 
@@ -82,34 +82,34 @@ public class PlayerScript : MonoBehaviour
 
     private void TryAttack()
     {
-        if (_attackCooldownTimer > _attackCooldown && InputController.IsAttackButtonPressed(_playerNumber))
+        if (AttackCooldownTimer > _attackCooldown && InputController.IsAttackButtonPressed(_playerNumber))
         {
             Attack();
         }
-        _attackCooldownTimer += Time.deltaTime;
+        AttackCooldownTimer += Time.deltaTime;
     }
 
     private void TrySpecialAttack()
     {
-        if (_specialAttackCooldownTimer > _specialAttackCooldown && InputController.IsSpecialAttackButtonPressed(_playerNumber))
+        if (SpecialAttackCooldownTimer > _specialAttackCooldown && InputController.IsSpecialAttackButtonPressed(_playerNumber))
         {
             SpecialAttack();
         }
-        _specialAttackCooldownTimer += Time.deltaTime;
+        SpecialAttackCooldownTimer += Time.deltaTime;
     }
 
     private void Attack()
     {
         StartAttackCoroutine(TryAttackDamageOpponent());
         _animationsController.Attack();
-        _attackCooldownTimer = 0;
+        AttackCooldownTimer = 0;
     }
 
     private void SpecialAttack()
     {
         StartAttackCoroutine(TrySpecialAttackDamageOpponent());
         _animationsController.SpecialAttack();
-        _specialAttackCooldownTimer = 0;
+        SpecialAttackCooldownTimer = 0;
     }
 
     private void StartAttackCoroutine(IEnumerator attack)
