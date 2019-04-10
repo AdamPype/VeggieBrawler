@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ShowCooldown : MonoBehaviour
 {
+    public bool Debug;
     [Range(1, 2)] public int Player = 1;
 
     public GameObject BasicAttackUI;
@@ -32,14 +33,18 @@ public class ShowCooldown : MonoBehaviour
     void Update()
     {
         DebugHeightCheck();
-        UpdateCoolDown(BasicAttackUI,_player.,_player.Health,_basicUp); //Cooldown is MaxCooldown - AttackCD Timer | (Because AttackCDTimer counts up)  
+        if (!Debug)
+        {
+            UpdateCoolDown(BasicAttackUI,_player.AttackCooldown-_player.AttackCooldownTimer,_player.AttackCooldown,_basicUp); //Cooldown is MaxCooldown - AttackCD Timer | (Because AttackCDTimer counts abilityUp)  
+            UpdateCoolDown(SpecialAttackUI,_player.SpecialAttackCooldown-_player.SpecialAttackCooldownTimer,_player.SpecialAttackCooldown,_specialUp);
+        }
     }
 
-    private void UpdateCoolDown(GameObject uiElement, float cooldown,float maxCooldown,bool up)
+    private void UpdateCoolDown(GameObject uiElement, float cooldown,float maxCooldown,bool abilityUp)
     {
         if (cooldown > 0)
         {
-            if (up)
+            if (abilityUp)
             {
                 uiElement.transform.GetChild(0).GetComponent<RectTransform>().localScale = Vector3.one; //If ability just got on cooldown, reset image Scale
             }
@@ -55,7 +60,7 @@ public class ShowCooldown : MonoBehaviour
         else //if cooldown < 0
         {
             uiElement.transform.GetChild(1).GetComponent<Text>().text = ""; //Leave text empty
-            up = true; //Notify that ability is up
+            abilityUp = true; //Notify that ability is up
         }
     }
 

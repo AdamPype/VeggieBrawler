@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GameUIManager : MonoBehaviour
 {
+    public bool Debug;
+
     public static GameUIManager Instance;
     public float TimeRemaining;
     public Text TimeText;
@@ -25,9 +27,12 @@ public class GameUIManager : MonoBehaviour
 
     void Start()
     {
-        Player1 = FindObjectOfType<ChosenCharactersSaver>().ChosenCharacters[0];
-        Player2 = FindObjectOfType<ChosenCharactersSaver>().ChosenCharacters[1];
-        Destroy(FindObjectOfType<ChosenCharactersSaver>());
+        if (!Debug)
+        {
+            Player1 = FindObjectOfType<ChosenCharactersSaver>().ChosenCharacters[0];
+            Player2 = FindObjectOfType<ChosenCharactersSaver>().ChosenCharacters[1];
+            Destroy(FindObjectOfType<ChosenCharactersSaver>());
+        }
 
         _originalP1HealthWidth = P1Health.rectTransform.localScale.x;
         //_originalP2HealthWidth = P2Health.rectTransform.localScale.x;
