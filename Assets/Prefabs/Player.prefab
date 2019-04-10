@@ -207,14 +207,14 @@ MonoBehaviour:
   _knockbackForce: 10
   _canControlDuringAttack: 0
   _attackDamage: 40
-  _attackCooldown: 0.5
+  AttackCooldown: 0
   _attackColliders:
   - {fileID: 994979344004851625}
   - {fileID: 1937014497765183945}
   _attackDamageTimeRange: {x: 0, y: 0.5}
   _useAttackMotion: 0
   _specialAttackDamage: 0
-  _specialAttackCooldown: 4
+  SpecialAttackCooldown: 0
   _specialAttackColliders:
   - {fileID: 994979344004851625}
   - {fileID: 1937014497765183945}
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc6e9922c6e5ce143b8dfc89dba37225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canMoveInAir: 0
+  _canMoveInAir: 1
   _acceleration: 18
   _dragOnGround: 6
   _dragInAir: 3

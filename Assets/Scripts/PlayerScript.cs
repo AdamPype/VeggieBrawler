@@ -53,8 +53,8 @@ public class PlayerScript : MonoBehaviour
         _animationsController = new AnimationsController(_animator, _physicsController);
 
         Health = _maxHealth;
-        _attackCooldownTimer = _attackCooldown;
-        _specialAttackCooldownTimer = _specialAttackCooldown;
+        AttackCooldownTimer = AttackCooldown;
+        SpecialAttackCooldownTimer = SpecialAttackCooldown;
         //_flinchTimer = _flinchTime;
     }
 
