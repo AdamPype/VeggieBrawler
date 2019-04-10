@@ -156,16 +156,21 @@ public class PlayerScript : MonoBehaviour
             yield return null;
         }
 
+        bool hasLandedHit = false;
+
         while (timer < _attackDamageTimeRange.y)
         {
-            foreach (AttackCollider attackCollider in _attackColliders)
+            if (!hasLandedHit)
             {
-                PlayerScript opponent = attackCollider.Opponent;
-                if (opponent != null)
+                foreach (AttackCollider attackCollider in _attackColliders)
                 {
-                    opponent.TakeDamage(_attackDamage, attackCollider.HitOrigin);
-                    timer = _attackDamageTimeRange.y;
-                    break;
+                    PlayerScript opponent = attackCollider.Opponent;
+                    if (opponent != null)
+                    {
+                        opponent.TakeDamage(_attackDamage, attackCollider.HitOrigin);
+                        hasLandedHit = true;
+                        break;
+                    }
                 }
             }
 
@@ -174,6 +179,7 @@ public class PlayerScript : MonoBehaviour
         }
 
         _generalAttackCoroutine = null;
+        Debug.Log("finished");
         UseAnimationMotion(false);
     }
 
@@ -187,16 +193,21 @@ public class PlayerScript : MonoBehaviour
             yield return null;
         }
 
+        bool hasLandedHit = false;
+
         while (timer < _specialAttackDamageTimeRange.y)
         {
-            foreach (AttackCollider specialAttackCollider in _specialAttackColliders)
+            if (!hasLandedHit)
             {
-                PlayerScript opponent = specialAttackCollider.Opponent;
-                if (opponent != null)
+                foreach (AttackCollider specialAttackCollider in _specialAttackColliders)
                 {
-                    opponent.TakeDamage(_specialAttackDamage, specialAttackCollider.HitOrigin);
-                    timer = _specialAttackDamageTimeRange.y;
-                    break;
+                    PlayerScript opponent = specialAttackCollider.Opponent;
+                    if (opponent != null)
+                    {
+                        opponent.TakeDamage(_specialAttackDamage, specialAttackCollider.HitOrigin);
+                        hasLandedHit = true;
+                        break;
+                    }
                 }
             }
 

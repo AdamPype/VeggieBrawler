@@ -17,7 +17,7 @@ public class AnimationsController {
     private int _attackParameter = Animator.StringToHash("Attack");
     private int _specialAttackParameter = Animator.StringToHash("SpecialAttack");
     private int _takeDamageAnimationParameter = Animator.StringToHash("TakeDamage");
-    private int _recoverAnimationParameter = Animator.StringToHash("Recover");
+    private int _recoverParameter = Animator.StringToHash("Recover");
 
     private int _deathParameter = Animator.StringToHash("Die");
     private int _resetParameter = Animator.StringToHash("Reset");
@@ -56,7 +56,7 @@ public class AnimationsController {
 
     public void Recover()
     {
-        _animator.SetTrigger(_recoverAnimationParameter);
+        _animator.SetTrigger(_recoverParameter);
     }
 
     public void Die()
@@ -71,6 +71,7 @@ public class AnimationsController {
 
     public void ResetAnimations()
     {
+        _animator.SetTrigger(_recoverParameter);
         _animator.SetTrigger(_resetParameter);
         //other parameters are reset on update
     }
