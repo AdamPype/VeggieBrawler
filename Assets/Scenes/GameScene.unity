@@ -690,6 +690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a1397c85cc8f2b4abb0e069a5b13e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Debug: 1
   TimeRemaining: 300
   TimeText: {fileID: 1276719550}
   P1Health: {fileID: 1683686626}
@@ -747,6 +748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c7db57c4d2f1c47a7c020c122a3f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Debug: 1
   Player: 1
   BasicAttackUI: {fileID: 506937841}
   SpecialAttackUI: {fileID: 450360039}
@@ -2330,6 +2332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c7db57c4d2f1c47a7c020c122a3f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Debug: 1
   Player: 1
   BasicAttackUI: {fileID: 1537101355}
   SpecialAttackUI: {fileID: 1946369640}
