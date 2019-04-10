@@ -32,7 +32,7 @@ public class ShowCooldown : MonoBehaviour
     void Update()
     {
         DebugHeightCheck();
-        //UpdateCoolDown(BasicAttackUI,_player.Health,_player.Health,_basicUp); //Cooldown is MaxCooldown - AttackCD Timer | (Because AttackCDTimer counts up)  
+        UpdateCoolDown(BasicAttackUI,_player.,_player.Health,_basicUp); //Cooldown is MaxCooldown - AttackCD Timer | (Because AttackCDTimer counts up)  
     }
 
     private void UpdateCoolDown(GameObject uiElement, float cooldown,float maxCooldown,bool up)

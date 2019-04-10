@@ -15,13 +15,13 @@ public class PlayerScript : MonoBehaviour
 
     [Header("Attack fields")]
     [SerializeField] private int _attackDamage=0;
-    [SerializeField] private float _attackCooldown=0;
+    public float AttackCooldown=0;
     [SerializeField] private AttackCollider[] _attackColliders;
     [SerializeField] private Vector2 _attackDamageTimeRange=Vector2.zero;
 
     [Header("Special attack fields")]
     [SerializeField] private int _specialAttackDamage=0;
-    [SerializeField] private float _specialAttackCooldown=0;
+    public float SpecialAttackCooldown=0;
     [SerializeField] private AttackCollider[] _specialAttackColliders;
     [SerializeField] private Vector2 _specialAttackDamageTimeRange=Vector2.zero;
 
@@ -49,8 +49,8 @@ public class PlayerScript : MonoBehaviour
         _animationsController = new AnimationsController(_animator, _physicsController);
 
         Health = _maxHealth;
-        AttackCooldownTimer = _attackCooldown;
-        SpecialAttackCooldownTimer = _specialAttackCooldown;
+        AttackCooldownTimer = AttackCooldown;
+        SpecialAttackCooldownTimer = SpecialAttackCooldown;
         _flinchTimer = _flinchTime;
     }
 
@@ -82,7 +82,7 @@ public class PlayerScript : MonoBehaviour
 
     private void TryAttack()
     {
-        if (AttackCooldownTimer > _attackCooldown && InputController.IsAttackButtonPressed(_playerNumber))
+        if (AttackCooldownTimer > AttackCooldown && InputController.IsAttackButtonPressed(_playerNumber))
         {
             Attack();
         }
@@ -91,7 +91,7 @@ public class PlayerScript : MonoBehaviour
 
     private void TrySpecialAttack()
     {
-        if (SpecialAttackCooldownTimer > _specialAttackCooldown && InputController.IsSpecialAttackButtonPressed(_playerNumber))
+        if (SpecialAttackCooldownTimer > SpecialAttackCooldown && InputController.IsSpecialAttackButtonPressed(_playerNumber))
         {
             SpecialAttack();
         }
