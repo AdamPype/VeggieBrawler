@@ -840,9 +840,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7936719069270327822, guid: df350dd400f911242b82794e9edc6459,
+    - target: {fileID: 4727529448679902252, guid: df350dd400f911242b82794e9edc6459,
         type: 3}
-      propertyPath: _canMoveInAir
+      propertyPath: _canControlDuringAttack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727529448679902252, guid: df350dd400f911242b82794e9edc6459,
+        type: 3}
+      propertyPath: _useAttackMotion
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -26,6 +26,7 @@ public class PhysicsController : MonoBehaviour
     private float _notGroundedTimer;
 
     public Vector3 InputMovement { get; set; } = Vector3.zero;
+    public bool IsKinematic { get => _rigidbody.isKinematic; set => _rigidbody.isKinematic = value; }
 
     void Start()
     {
@@ -36,6 +37,8 @@ public class PhysicsController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (IsKinematic) return;
+
         ApplyGround();
         ApplyGravity();
 

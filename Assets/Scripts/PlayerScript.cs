@@ -113,6 +113,8 @@ public class PlayerScript : MonoBehaviour
     private void Attack()
     {
         StartAttackCoroutine(TryAttackDamageOpponent());
+
+        UseAnimationMotion(_useAttackMotion);
         _animationsController.Attack();
         AttackCooldownTimer = 0;
     }
@@ -120,8 +122,16 @@ public class PlayerScript : MonoBehaviour
     private void SpecialAttack()
     {
         StartAttackCoroutine(TrySpecialAttackDamageOpponent());
+
+        UseAnimationMotion(_useSpecialAttackMotion);
         _animationsController.SpecialAttack();
         SpecialAttackCooldownTimer = 0;
+    }
+
+    private void UseAnimationMotion(bool useMotion)
+    {
+        _physicsController.IsKinematic = useMotion;
+        _animationsController.ApplyRootMotion(useMotion);
     }
 
     private void StartAttackCoroutine(IEnumerator attack)
@@ -160,6 +170,7 @@ public class PlayerScript : MonoBehaviour
         }
 
         _generalAttackCoroutine = null;
+        UseAnimationMotion(false);
     }
 
     private IEnumerator TrySpecialAttackDamageOpponent()
@@ -190,12 +201,16 @@ public class PlayerScript : MonoBehaviour
         }
 
         _generalAttackCoroutine = null;
+        UseAnimationMotion(false);
     }
 
     public void TakeDamage(int damage, Vector3 origin)
     {
         if (_generalAttackCoroutine != null)
+        {
+            UseAnimationMotion(false);
             StopCoroutine(_generalAttackCoroutine);
+        }
 
         //_flinchTimer = 0;
         StartCoroutine(Flinch());
