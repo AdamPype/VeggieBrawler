@@ -5,9 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PhysicsController : MonoBehaviour
 {
-
+    [SerializeField] private bool _canMoveInAir;
     [SerializeField] private float _acceleration = 0;
-    [SerializeField] private float _drag = 0;
+    [SerializeField] private float _dragOnGround = 0;
+    [SerializeField] private float _dragInAir = 0;
     [SerializeField] private float _maximumXZVelocity = (30 * 1000) / (60 * 60); //[m/s] 30km/h
     [SerializeField] private float _jumpHeight = 0;
 
@@ -70,13 +71,16 @@ public class PhysicsController : MonoBehaviour
 
     private void ApplyMovement()
     {
-        //get relative rotation from camera
-        Vector3 xzForward = Vector3.Scale(_absoluteForward.forward, new Vector3(1, 0, 1));
-        Quaternion relativeRot = Quaternion.LookRotation(xzForward);
+        if (_canMoveInAir || _groundCollider.isGrounded())
+        {
+            //get relative rotation from camera
+            Vector3 xzForward = Vector3.Scale(_absoluteForward.forward, new Vector3(1, 0, 1));
+            Quaternion relativeRot = Quaternion.LookRotation(xzForward);
 
-        //move in relative direction
-        Vector3 relativeMov = relativeRot * InputMovement;
-        _velocity += relativeMov * _acceleration * Time.deltaTime;
+            //move in relative direction
+            Vector3 relativeMov = relativeRot * InputMovement;
+            _velocity += relativeMov * _acceleration * Time.deltaTime;
+        }
     }
 
     private void ApplyRotation()
@@ -108,7 +112,7 @@ public class PhysicsController : MonoBehaviour
         if (IsGrounded())
         {
             //drag
-            _velocity = _velocity * (1 - _drag * Time.deltaTime); //same as lerp
+            _velocity = _velocity * (1 - _dragOnGround * Time.deltaTime); //same as lerp
         }
     }
 
@@ -116,8 +120,13 @@ public class PhysicsController : MonoBehaviour
     {
         if (!IsGrounded())
         {
+            //float y = _velocity.y;
+            //_velocity = Vector3.Lerp(_velocity, Vector3.zero, 0.1f);
+            //_velocity.y = y;
+            
             float y = _velocity.y;
-            _velocity = Vector3.Lerp(_velocity, Vector3.zero, 0.1f);
+            Vector3 _xzVelocity = Vector3.Scale(_velocity, new Vector3(1, 0, 1));
+            _velocity = _xzVelocity * (1 - _dragInAir * Time.deltaTime);
             _velocity.y = y;
         }
     }

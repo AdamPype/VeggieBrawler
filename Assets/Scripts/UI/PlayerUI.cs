@@ -76,7 +76,7 @@ public class PlayerUI : MonoBehaviour
         {
             GameObject chosenChar = Element.GetComponent<CharacterTemplate>().Character;    //Get Gameobject
 
-            chosenChar.GetComponent<PlayerScript>().enabled = false;    //Disable Playerscript since We only want to visualize model
+            DisableCharacterScripts(chosenChar);    //Disable certain script since we just want to visualize the character 
 
             NameSpace.text = Element.GetComponent<CharacterTemplate>().CharacterName;   //Show character name on screen
 
@@ -125,5 +125,11 @@ public class PlayerUI : MonoBehaviour
         AllowMouseMovement = true;
 
         HideUIElements();
+    }
+
+    private void DisableCharacterScripts(GameObject chosenChar)
+    {
+        chosenChar.GetComponent<PlayerScript>().enabled = false;
+        chosenChar.GetComponent<PhysicsController>().enabled = false;
     }
 }

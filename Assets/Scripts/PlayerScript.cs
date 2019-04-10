@@ -12,18 +12,21 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private int _maxHealth = 0;
     [SerializeField] private float _flinchTime=0;
     [SerializeField] private float _knockbackForce = 10;
+    [SerializeField] private bool _canControlDuringAttack = false;
 
     [Header("Attack fields")]
     [SerializeField] private int _attackDamage=0;
-    [SerializeField] private float _attackCooldown=0;
+    public float AttackCooldown=0;
     [SerializeField] private AttackCollider[] _attackColliders;
     [SerializeField] private Vector2 _attackDamageTimeRange=Vector2.zero;
+    [SerializeField] private bool _useAttackMotion=false;
 
     [Header("Special attack fields")]
     [SerializeField] private int _specialAttackDamage=0;
-    [SerializeField] private float _specialAttackCooldown=0;
+    public float SpecialAttackCooldown=0;
     [SerializeField] private AttackCollider[] _specialAttackColliders;
     [SerializeField] private Vector2 _specialAttackDamageTimeRange=Vector2.zero;
+    [SerializeField] private bool _useSpecialAttackMotion=false;
 
     public int MaxHealth { get => _maxHealth; }
     public int Health { get; private set; }
@@ -34,10 +37,11 @@ public class PlayerScript : MonoBehaviour
     private Animator _animator;
     private AnimationsController _animationsController;
 
-    private float _attackCooldownTimer;
-    private float _specialAttackCooldownTimer;
+    public float AttackCooldownTimer { get; set; }
+    public float SpecialAttackCooldownTimer { get; set; }
     private Coroutine _generalAttackCoroutine;
-    private float _flinchTimer = 0;
+    //private float _flinchTimer = 0;
+    private bool _isFlinched=false;
     private bool _isDead;
 
     void Start()
@@ -49,9 +53,10 @@ public class PlayerScript : MonoBehaviour
         _animationsController = new AnimationsController(_animator, _physicsController);
 
         Health = _maxHealth;
-        _attackCooldownTimer = _attackCooldown;
-        _specialAttackCooldownTimer = _specialAttackCooldown;
-        _flinchTimer = _flinchTime;
+        AttackCooldownTimer = AttackCooldown;
+        SpecialAttackCooldownTimer = SpecialAttackCooldown;
+        //_flinchTimer = _flinchTime;
+
     }
 
     private void Update()
@@ -59,9 +64,9 @@ public class PlayerScript : MonoBehaviour
         if (_isDead) return;
 
 
-        if (_flinchTimer >= _flinchTime)
+        if (!_isFlinched)
         {
-            if(_generalAttackCoroutine == null)
+            if(_generalAttackCoroutine == null || _canControlDuringAttack)
             {
                 _physicsController.InputMovement = new Vector3(InputController.GetHorizontalMovement(_playerNumber), 0, 0);
 
@@ -73,43 +78,51 @@ public class PlayerScript : MonoBehaviour
                 TryAttack();
                 TrySpecialAttack();
             }
+            else
+            {
+                _physicsController.InputMovement = Vector3.zero;
+            }
 
         }
-        _flinchTimer += Time.deltaTime;
+        else
+        {
+            _physicsController.InputMovement = Vector3.zero;
+        }
+        //_flinchTimer += Time.deltaTime;
 
         _animationsController.Update();
     }
 
     private void TryAttack()
     {
-        if (_attackCooldownTimer > _attackCooldown && InputController.IsAttackButtonPressed(_playerNumber))
+        if (AttackCooldownTimer > AttackCooldown && InputController.IsAttackButtonPressed(_playerNumber))
         {
             Attack();
         }
-        _attackCooldownTimer += Time.deltaTime;
+        AttackCooldownTimer += Time.deltaTime;
     }
 
     private void TrySpecialAttack()
     {
-        if (_specialAttackCooldownTimer > _specialAttackCooldown && InputController.IsSpecialAttackButtonPressed(_playerNumber))
+        if (SpecialAttackCooldownTimer > SpecialAttackCooldown && InputController.IsSpecialAttackButtonPressed(_playerNumber))
         {
             SpecialAttack();
         }
-        _specialAttackCooldownTimer += Time.deltaTime;
+        SpecialAttackCooldownTimer += Time.deltaTime;
     }
 
     private void Attack()
     {
         StartAttackCoroutine(TryAttackDamageOpponent());
         _animationsController.Attack();
-        _attackCooldownTimer = 0;
+        AttackCooldownTimer = 0;
     }
 
     private void SpecialAttack()
     {
         StartAttackCoroutine(TrySpecialAttackDamageOpponent());
         _animationsController.SpecialAttack();
-        _specialAttackCooldownTimer = 0;
+        SpecialAttackCooldownTimer = 0;
     }
 
     private void StartAttackCoroutine(IEnumerator attack)
@@ -185,12 +198,22 @@ public class PlayerScript : MonoBehaviour
         if (_generalAttackCoroutine != null)
             StopCoroutine(_generalAttackCoroutine);
 
-        _flinchTimer = 0;
+        //_flinchTimer = 0;
+        StartCoroutine(Flinch());
         _physicsController.TakeKnockBack(_knockbackForce, origin);
         _animationsController.TakeDamage();
         Health -= damage;
         Die();
         Debug.Log("DAMAGE");
+    }
+
+    private IEnumerator Flinch()
+    {
+        _isFlinched = true;
+        yield return new WaitForSeconds(_flinchTime);
+
+        _isFlinched = false;
+        _animationsController.Recover();
     }
 
     private void Die()

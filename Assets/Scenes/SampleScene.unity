@@ -283,7 +283,7 @@ PrefabInstance:
     - target: {fileID: 4727529448679902252, guid: df350dd400f911242b82794e9edc6459,
         type: 3}
       propertyPath: _flinchTime
-      value: 0.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4727529448679902252, guid: df350dd400f911242b82794e9edc6459,
         type: 3}
@@ -294,6 +294,16 @@ PrefabInstance:
         type: 3}
       propertyPath: _attackDamage
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7936719069270327822, guid: df350dd400f911242b82794e9edc6459,
+        type: 3}
+      propertyPath: _dragOnGround
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7936719069270327822, guid: df350dd400f911242b82794e9edc6459,
+        type: 3}
+      propertyPath: _dragInAir
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df350dd400f911242b82794e9edc6459, type: 3}
@@ -388,6 +398,16 @@ PrefabInstance:
         type: 3}
       propertyPath: _attackDamage
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7936719069270327822, guid: df350dd400f911242b82794e9edc6459,
+        type: 3}
+      propertyPath: _dragOnGround
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7936719069270327822, guid: df350dd400f911242b82794e9edc6459,
+        type: 3}
+      propertyPath: _dragInAir
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df350dd400f911242b82794e9edc6459, type: 3}
@@ -829,6 +849,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7936719069270327822, guid: df350dd400f911242b82794e9edc6459,
+        type: 3}
+      propertyPath: _dragOnGround
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7936719069270327822, guid: df350dd400f911242b82794e9edc6459,
+        type: 3}
+      propertyPath: _dragInAir
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df350dd400f911242b82794e9edc6459, type: 3}

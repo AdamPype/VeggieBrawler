@@ -46,14 +46,13 @@ public class CharacterSelectManager : MonoBehaviour
 
     private void StartGame()
     {
-        Debug.Log("Starting Game");
+        //Save Chosen Characters And Go To Game Scene 
         for (int i = 0; i < AreCharactersChosen.Length; i++)
         {
             ChosenCharactersSaver.Instance.ChosenCharacters[i] = AreCharactersChosen[i].ChosenCharacter;
         }
 
         SceneManager.LoadScene(2);
-        //Probably add something that passes chosen characters along
     }
 
     private void ShowStartGameUI()
