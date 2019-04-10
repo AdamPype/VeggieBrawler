@@ -27,6 +27,7 @@ public class PhysicsController : MonoBehaviour
 
     public Vector3 InputMovement { get; set; } = Vector3.zero;
     public bool IsKinematic { get => _rigidbody.isKinematic; set => _rigidbody.isKinematic = value; }
+    public Vector3 Velocity { get => _velocity; set => _velocity = value; }
 
     void Start()
     {
@@ -162,11 +163,6 @@ public class PhysicsController : MonoBehaviour
             return (hit.point - _transform.position).magnitude;
         }
         return Mathf.Infinity;
-    }
-
-    public Vector3 GetVelocity()
-    {
-        return _rigidbody.velocity;
     }
 
     public void TakeKnockBack(float power, Vector3 origin)

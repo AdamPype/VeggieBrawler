@@ -130,8 +130,12 @@ public class PlayerScript : MonoBehaviour
 
     private void UseAnimationMotion(bool useMotion)
     {
+        if (!useMotion && _physicsController.IsKinematic)
+            _physicsController.Velocity = Vector3.zero;
+
         _physicsController.IsKinematic = useMotion;
         _animationsController.ApplyRootMotion(useMotion);
+
     }
 
     private void StartAttackCoroutine(IEnumerator attack)

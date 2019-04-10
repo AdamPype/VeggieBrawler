@@ -36,7 +36,7 @@ public class AnimationsController {
 
         _animator.SetBool(_isGroundedAnimationParameter, _physicsController.IsGrounded());
         _animator.SetFloat(_distanceFromGroundParameter, _physicsController.GetDistanceFromGround());
-        _animator.SetFloat(_verticalVelocityAnimationParameter, _physicsController.GetVelocity().y);
+        _animator.SetFloat(_verticalVelocityAnimationParameter, _physicsController.Velocity.y);
     }
 
     public void Attack()
