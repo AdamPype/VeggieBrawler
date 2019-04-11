@@ -90,15 +90,19 @@ public class PhysicsController : MonoBehaviour
     private void ApplyRotation()
     {
         float movement = InputMovement.x;
-        if (movement < 0)
+        FlipRotation(movement);
+    }
+
+    private void FlipRotation(float direction)
+    {
+        if (direction < 0)
         {
             _transform.rotation = Quaternion.LookRotation(-_absoluteForward.right);
         }
-        if (movement > 0)
+        if (direction > 0)
         {
             _transform.rotation = Quaternion.LookRotation(_absoluteForward.right);
         }
-
     }
 
     private void LimitXZVelocity()
@@ -172,6 +176,8 @@ public class PhysicsController : MonoBehaviour
 
         if (_absoluteForward.TransformVector(rawDirection).x < 0)
             horizontalDistance = -horizontalDistance;
+
+        FlipRotation(-horizontalDistance);
 
         Vector3 direction = _absoluteForward.TransformVector(new Vector3(horizontalDistance, rawDirection.y/2,0)).normalized;
 
