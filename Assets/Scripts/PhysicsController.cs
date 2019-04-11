@@ -66,9 +66,9 @@ public class PhysicsController : MonoBehaviour
 
     private void ApplyGravity()
     {
-        if (!IsGrounded())
-        {
             _velocity += Physics.gravity * Time.deltaTime;
+        if (!_groundCollider.isGrounded())
+        {
             _notGroundedTimer += Time.deltaTime;
         }
     }
