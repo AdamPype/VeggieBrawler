@@ -16,21 +16,21 @@ public class PlayerScript : MonoBehaviour
 
     [Header("Attack fields")]
     [SerializeField] private int _attackDamage=0;
-    public float AttackCooldown=0;
     [SerializeField] private AttackCollider[] _attackColliders;
+    public float AttackDuration = 0;
     [SerializeField] private Vector2 _attackDamageTimeRange=Vector2.zero;
     [SerializeField] private bool _useAttackMotion=false;
 
     [Header("Special attack fields")]
     [SerializeField] private int _specialAttackDamage=0;
-    public float SpecialAttackCooldown=0;
     [SerializeField] private AttackCollider[] _specialAttackColliders;
+    public float SpecialAttackDuration = 0;
     [SerializeField] private Vector2 _specialAttackDamageTimeRange=Vector2.zero;
     [SerializeField] private bool _useSpecialAttackMotion=false;
 
     public int MaxHealth { get => _maxHealth; }
     public int Health { get; private set; }
-    public int PlayerNumber { get => _playerNumber; }
+    public int PlayerNumber { get => _playerNumber; set => _playerNumber=value; }
 
     private Transform _transform;
     private PhysicsController _physicsController;
@@ -53,8 +53,8 @@ public class PlayerScript : MonoBehaviour
         _animationsController = new AnimationsController(_animator, _physicsController);
 
         Health = _maxHealth;
-        AttackCooldownTimer = AttackCooldown;
-        SpecialAttackCooldownTimer = SpecialAttackCooldown;
+        AttackCooldownTimer = AttackDuration;
+        SpecialAttackCooldownTimer = SpecialAttackDuration;
         //_flinchTimer = _flinchTime;
     }
 
@@ -94,7 +94,7 @@ public class PlayerScript : MonoBehaviour
 
     private void TryAttack()
     {
-        if (AttackCooldownTimer > AttackCooldown && InputController.IsAttackButtonPressed(_playerNumber))
+        if (_generalAttackCoroutine==null && InputController.IsAttackButtonPressed(_playerNumber))
         {
             Attack();
         }
@@ -103,7 +103,7 @@ public class PlayerScript : MonoBehaviour
 
     private void TrySpecialAttack()
     {
-        if (SpecialAttackCooldownTimer > SpecialAttackCooldown && InputController.IsSpecialAttackButtonPressed(_playerNumber))
+        if (_generalAttackCoroutine == null && InputController.IsSpecialAttackButtonPressed(_playerNumber))
         {
             SpecialAttack();
         }
@@ -178,6 +178,12 @@ public class PlayerScript : MonoBehaviour
             yield return null;
         }
 
+        while (timer < AttackDuration)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
         _generalAttackCoroutine = null;
         Debug.Log("finished");
         UseAnimationMotion(false);
@@ -211,6 +217,12 @@ public class PlayerScript : MonoBehaviour
                 }
             }
 
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        while (timer < SpecialAttackDuration)
+        {
             timer += Time.deltaTime;
             yield return null;
         }

@@ -35,8 +35,8 @@ public class ShowCooldown : MonoBehaviour
         DebugHeightCheck();
         if (!Debug)
         {
-            UpdateCoolDown(BasicAttackUI,_player.AttackCooldown-_player.AttackCooldownTimer,_player.AttackCooldown,_basicUp); //Cooldown is MaxCooldown - AttackCD Timer | (Because AttackCDTimer counts abilityUp)  
-            UpdateCoolDown(SpecialAttackUI,_player.SpecialAttackCooldown-_player.SpecialAttackCooldownTimer,_player.SpecialAttackCooldown,_specialUp);
+            UpdateCoolDown(BasicAttackUI,_player.AttackDuration-_player.AttackCooldownTimer,_player.AttackDuration,_basicUp); //Cooldown is MaxCooldown - AttackCD Timer | (Because AttackCDTimer counts abilityUp)  
+            UpdateCoolDown(SpecialAttackUI,_player.SpecialAttackDuration-_player.SpecialAttackCooldownTimer,_player.SpecialAttackDuration,_specialUp);
         }
     }
 

@@ -51,3 +51,28 @@ So, if you want your mouse to be above something in the game, you will place the
 Since I wanted the StartGameUI to be shown above the Mouse UI, I placed it lower in the Hierarchy 
 --------------------
 	
+	Players:
+To use the player prefab: 
+	Duplicate The original Player prefab.
+	Switch out the model with your own.
+	Add "AttackCollider" prefabs to to limbs the player uses to fight.
+	Duplicate the animationController and switch out the animations & values
+
+
+General:
+	All movement parameters are adjustable in the Player inspector (PhysicsController).
+
+	MaxHealth
+	Flinch time - how long player loses control when he gets hit
+	Knockback force - how hard players gets knocked back when hit
+	Can control during attack - if player is able to move while performing an attack (this will always be false if the attack uses motion from the animation).
+
+Attacks:
+	A player has 2 attacks: Normal Attack & Special atttack. Both attacks have same parameters.
+
+	Attack damage
+	Attack colliders - Drag the AttackColliders your attack uses in here
+	Attack duration - How long the attack takes to perform
+	Attack damage time range - The time window in which the attack will damage the opponent. (some attacks need to charge up first or leave the player vunerable after they performed it)
+	Use attack motion - Does the motion of the attack animation take over when performing an attack?
+
