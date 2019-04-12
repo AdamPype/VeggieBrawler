@@ -63,6 +63,8 @@ public class GameUIManager : MonoBehaviour
         {
             float newWidth = (originalWidth / player.GetComponent<PlayerScript>().MaxHealth) * player.GetComponent<PlayerScript>().Health;
             health.localScale = new Vector3(newWidth,health.localScale.y,health.localScale.z);
+            if (health.localScale.x < 0)
+                health.localScale = Vector3.Scale(health.localScale, new Vector3(0, 1, 1));
         }
     }
 
