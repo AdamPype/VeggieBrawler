@@ -60,7 +60,11 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
-        if (_isDead) return;
+        if (_isDead)
+        {
+            GameControllerScript.Instance.EndGame(_playerNumber);
+            return;
+        }
 
 
         if (!_isFlinched)

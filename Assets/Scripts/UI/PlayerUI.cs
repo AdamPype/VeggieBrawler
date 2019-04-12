@@ -21,6 +21,8 @@ public class PlayerUI : MonoBehaviour
     private List<RaycastResult> _hitElements = new List<RaycastResult>();
 
     private CharacterSelectManager _csm;
+
+    private GameObject _instantiatedCharacter;
     void Start()
     {
         _originalBorderPos = Border.anchoredPosition; //Save original UI Pos to Unlerp it if Necessary
@@ -72,7 +74,7 @@ public class PlayerUI : MonoBehaviour
     {
         GameObject Element = GetElementUnderMouse();
 
-        if (Element != null && Element.tag == "CharacterUI")
+        if (Element != null && Element.tag == "CharacterUI" && ChosenCharacter==null)
         {
             ChosenCharacter = Element.GetComponent<CharacterTemplate>().Character;    //Get Gameobject
 
@@ -87,11 +89,11 @@ public class PlayerUI : MonoBehaviour
     //Visualizes character on Left/Right Side Of Scene
     private void LoadCharacter(GameObject chosenChar)
     {
-        GameObject instantiatedChar = Instantiate(chosenChar, VisSpot);
+        _instantiatedCharacter = Instantiate(chosenChar, VisSpot);
 
         //Code below puts gameobject in specific layer.
         //This allows the renderTexture to see it.
-        Transform[] charChildren = instantiatedChar.GetComponentsInChildren<Transform>();
+        Transform[] charChildren = _instantiatedCharacter.GetComponentsInChildren<Transform>();
 
         foreach (Transform var in charChildren)
         {
@@ -103,24 +105,19 @@ public class PlayerUI : MonoBehaviour
 
     private void ShowUIElements()
     {
-        LerpUI(Border,-10f);
+        UILerper.LerpUI(Border,new Vector2(Border.anchoredPosition.x,-10f),_csm.CharacterSelectBorderMoveSpeed);
         NameSpace.enabled = true;
     }
 
     private void HideUIElements()
     {
-        LerpUI(Border,_originalBorderPos.y);
+        UILerper.LerpUI(Border, _originalBorderPos, _csm.CharacterSelectBorderMoveSpeed);
         NameSpace.enabled = false;
-    }
-
-    private void LerpUI(RectTransform lerpThis,float endPosition)
-    {
-        lerpThis.anchoredPosition = Vector2.Lerp(Border.anchoredPosition, new Vector2(lerpThis.anchoredPosition.x, endPosition), Time.deltaTime * _csm.CharacterSelectBorderMoveSpeed);
     }
 
     private void UnLoadCharacter()
     {
-        Destroy(ChosenCharacter);
+        Destroy(_instantiatedCharacter);
         ChosenCharacter = null;
         AllowMouseMovement = true;
 

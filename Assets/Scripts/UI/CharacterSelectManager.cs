@@ -57,16 +57,11 @@ public class CharacterSelectManager : MonoBehaviour
 
     private void ShowStartGameUI()
     {
-       LerpUI(StartGameUI,Vector2.zero);
+       UILerper.LerpUI(StartGameUI,new Vector2(0,_originalUIPos.y),StartGameMoveSpeed);
     }
 
     private void HideStartGameUI()
     {
-        LerpUI(StartGameUI,_originalUIPos);
-    }
-
-    private void LerpUI(RectTransform lerpThis,Vector2 targetPos)
-    {
-        lerpThis.anchoredPosition = Vector2.Lerp(lerpThis.anchoredPosition, new Vector2(targetPos.x, StartGameUI.anchoredPosition.y), Time.deltaTime * StartGameMoveSpeed);
+        UILerper.LerpUI(StartGameUI,_originalUIPos,StartGameMoveSpeed);
     }
 }
