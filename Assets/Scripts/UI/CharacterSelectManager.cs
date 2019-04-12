@@ -12,7 +12,7 @@ public class CharacterSelectManager : MonoBehaviour
     public float StartGameMoveSpeed;
 
     public RectTransform StartGameUI;
-    private PlayerUI[] AreCharactersChosen = new PlayerUI[2];
+    public PlayerUI[] AreCharactersChosen = new PlayerUI[2];
 
     private Vector2 _originalUIPos;
     private bool _allowStartGame;
@@ -40,7 +40,7 @@ public class CharacterSelectManager : MonoBehaviour
             _allowStartGame = false;
         }
 
-        if(_allowStartGame && Input.GetButtonDown("StartGame"))
+        if(_allowStartGame && Input.GetButtonDown("StartButton"))
             StartGame();
     }
 

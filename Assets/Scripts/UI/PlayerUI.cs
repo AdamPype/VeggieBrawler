@@ -74,24 +74,24 @@ public class PlayerUI : MonoBehaviour
 
         if (Element != null && Element.tag == "CharacterUI")
         {
-            GameObject chosenChar = Element.GetComponent<CharacterTemplate>().Character;    //Get Gameobject
+            ChosenCharacter = Element.GetComponent<CharacterTemplate>().Character;    //Get Gameobject
 
-            DisableCharacterScripts(chosenChar);    //Disable certain script since we just want to visualize the character 
+            DisableCharacterScripts(ChosenCharacter);    //Disable certain script since we just want to visualize the character 
 
             NameSpace.text = Element.GetComponent<CharacterTemplate>().CharacterName;   //Show character name on screen
 
-            LoadCharacter(chosenChar);  //Actually visualize the model - can be commented out if you dont want player to be visualized at all
+            LoadCharacter(ChosenCharacter);  //Actually visualize the model - can be commented out if you dont want player to be visualized at all
         }
     }
 
     //Visualizes character on Left/Right Side Of Scene
     private void LoadCharacter(GameObject chosenChar)
     {
-        ChosenCharacter = Instantiate(chosenChar, VisSpot);
+        GameObject instantiatedChar = Instantiate(chosenChar, VisSpot);
 
         //Code below puts gameobject in specific layer.
         //This allows the renderTexture to see it.
-        Transform[] charChildren = ChosenCharacter.GetComponentsInChildren<Transform>();
+        Transform[] charChildren = instantiatedChar.GetComponentsInChildren<Transform>();
 
         foreach (Transform var in charChildren)
         {

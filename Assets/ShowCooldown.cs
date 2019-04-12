@@ -21,12 +21,13 @@ public class ShowCooldown : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       /* if (Player == 1)
-            _player = GameUIManager.Instance.Player1.GetComponent<PlayerScript>();
-        else
-            _player = GameUIManager.Instance.Player2.GetComponent<PlayerScript>();
-
-        */
+        if (!Debug)
+        {
+            if (Player == 1)
+                _player = GameControllerScript.Instance.Player1.GetComponent<PlayerScript>();
+            else
+                _player = GameControllerScript.Instance.Player2.GetComponent<PlayerScript>();
+        }     
     }
 
     // Update is called once per frame

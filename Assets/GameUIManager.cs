@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class GameUIManager : MonoBehaviour
 {
-    public bool Debug;
+    public bool DebugMode;
 
     public static GameUIManager Instance;
-    public float TimeRemaining;
     public Text TimeText;
 
     public Image P1Health;
@@ -23,41 +22,42 @@ public class GameUIManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
+
+
+        #region old
+        /*if (!Debug)
+        {
+            Player1 = FindObjectOfType<ChosenCharactersSaver>().ChosenCharacters[0];
+            Player2 = FindObjectOfType<ChosenCharactersSaver>().ChosenCharacters[1];
+            //Destroy(FindObjectOfType<ChosenCharactersSaver>());
+        }*/
+        #endregion
     }
 
     void Start()
     {
-        if (!Debug)
-        {
-            Player1 = FindObjectOfType<ChosenCharactersSaver>().ChosenCharacters[0];
-            Player2 = FindObjectOfType<ChosenCharactersSaver>().ChosenCharacters[1];
-            Destroy(FindObjectOfType<ChosenCharactersSaver>());
-        }
-
         _originalP1HealthWidth = P1Health.rectTransform.localScale.x;
-        //_originalP2HealthWidth = P2Health.rectTransform.localScale.x;
+        _originalP2HealthWidth = P2Health.rectTransform.localScale.x;
+
+        Player1 = GameControllerScript.Instance.SpawnedPlayer1;
+        Debug.Log(Player1);
+        Player2 = GameControllerScript.Instance.SpawnedPlayer2;
     }
 
     void Update()
     {
-        CalculateRemainingTime();
+        TimeText.text = GameControllerScript.Instance.TimeText;
 
-        DebugWidthTest();
-
-        //SetImageWidth(_originalP1HealthWidth,P1Health.rectTransform,Player1);
-        //SetImageWidth(_originalP2HealthWidth,P2Health.rectTransform,Player2);
+        //DebugWidthTest();
+        if (!DebugMode)
+        {
+            SetHealthImageWidth(_originalP1HealthWidth,P1Health.rectTransform,Player1);
+            SetHealthImageWidth(_originalP2HealthWidth,P2Health.rectTransform,Player2);
+        }
     }
 
-    private void CalculateRemainingTime()
-    {
-        TimeRemaining -= Time.deltaTime;
-        string minutes = Mathf.Floor(TimeRemaining / 60).ToString("00");
-        string seconds = Mathf.Floor(TimeRemaining % 60).ToString("00");
-
-        TimeText.text = minutes + ":" + seconds;
-    }
     //Method that links image scale to player health remaining - can change image color/img around too
-    private void SetImageWidth(float originalWidth,RectTransform health,GameObject player)
+    private void SetHealthImageWidth(float originalWidth,RectTransform health,GameObject player)
     {
         if (health.localScale.x > 0)
         {

@@ -8,7 +8,7 @@ public class CameraScript : MonoBehaviour
     //tracking
     [SerializeField] private float _followSpeed;
     [SerializeField] private Vector3 _offset;
-    [SerializeField] private List<Transform> _objectsToTrack = new List<Transform>();
+    public List<Transform> ObjectsToTrack = new List<Transform>();
     Bounds _bounds = new Bounds();
     private Vector3 _vel;
 
@@ -44,10 +44,10 @@ public class CameraScript : MonoBehaviour
 
     private Vector3 GetBoundsCenter()
         {
-        Bounds bounds = new Bounds(_objectsToTrack[0].position, Vector3.zero);
-        if (_objectsToTrack.Count > 0)
+        Bounds bounds = new Bounds(ObjectsToTrack[0].position, Vector3.zero);
+        if (ObjectsToTrack.Count > 0)
             {
-            foreach (Transform item in _objectsToTrack)
+            foreach (Transform item in ObjectsToTrack)
                 {
                 if (item)
                     bounds.Encapsulate(item.position);
