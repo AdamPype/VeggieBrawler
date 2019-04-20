@@ -16,10 +16,11 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float _jumpHeight = 0;
 
     [SerializeField] private GroundColliderScript _groundCollider;
-    
+
 
     private Transform _transform;
     private Rigidbody _rigidbody;
+    private Transform _model;
     //private Animator _anim;
     private InputController _inputController = InputController.Instance();
 
@@ -34,6 +35,7 @@ public class PlayerScript : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
 
+        _model = transform.Find("Model");
         _transform = transform;
         //_anim = GetComponent<Animator>();
         //_input = GetComponent<ControlScript>();
@@ -47,6 +49,11 @@ public class PlayerScript : MonoBehaviour
         {
             _jump = true;
         }
+
+        if (_velocity.magnitude > 0.1f)
+            {
+            _model.localEulerAngles = Vector3.Scale(Quaternion.LookRotation(_velocity).eulerAngles, Vector3.up);
+            }
     }
 
     private void OnDrawGizmos()
