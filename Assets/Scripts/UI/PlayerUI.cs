@@ -23,10 +23,19 @@ public class PlayerUI : MonoBehaviour
     private CharacterSelectManager _csm;
 
     private GameObject _instantiatedCharacter;
+
+    //juice
+    private float _maxAmplitude = 30;
+    private float _amplitude;
+    private float _freq = 0.4f;
+    private float _frameCount;
+    private Squishy _squish;
+
     void Start()
     {
         _originalBorderPos = Border.anchoredPosition; //Save original UI Pos to Unlerp it if Necessary
         _csm = CharacterSelectManager.Instance;
+        _squish = Mouse.GetComponent<Squishy>();
     }
     // Update is called once per frame
     void Update()
@@ -48,10 +57,29 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+        {
+        _frameCount++;
+        }
+
     private void MoveMouse()
     {
         Mouse.anchoredPosition += new Vector2(InputController.GetLeftJoystickFromPlayer(PlayerNumber).x, InputController.GetLeftJoystickFromPlayer(PlayerNumber).z) * _csm.MouseMoveSpeed;
-    }
+
+        //juice
+        float x = InputController.GetRawLeftJoystickFromPlayer(PlayerNumber).x;
+        if (x != 0)
+            {
+            _amplitude = _maxAmplitude * -x;
+            _frameCount = 1/_freq;
+            }
+        float sin = _amplitude * Mathf.Sin(_frameCount * _freq);
+        Mouse.localRotation = Quaternion.Lerp(Mouse.localRotation, Quaternion.Euler(0, 0, sin), 10 * Time.deltaTime);
+        _amplitude = Mathf.Lerp(_amplitude, 0, Time.deltaTime * 3);
+
+        if (InputController.IsAButtonPressed(PlayerNumber))
+            _squish.Squish();
+        }
 
     //Method to check what's under the players mouse
     private GameObject GetElementUnderMouse()

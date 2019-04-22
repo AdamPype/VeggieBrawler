@@ -22,7 +22,7 @@ public class PhysicsController : MonoBehaviour
     private Vector3 _velocity = Vector3.zero; // [m/s]
 
     public bool Jump { get; set; }
-    private bool _isJumping;
+    public bool IsJumping { get; set; }
     private float _notGroundedTimer;
 
     public Vector3 InputMovement { get; set; } = Vector3.zero;
@@ -59,7 +59,7 @@ public class PhysicsController : MonoBehaviour
         if (IsGrounded() && _velocity.y < 0)
         {
             _velocity -= Vector3.Project(_velocity, Physics.gravity);
-            _isJumping = false;
+            IsJumping = false;
             _notGroundedTimer = 0;
         }
     }
@@ -145,7 +145,7 @@ public class PhysicsController : MonoBehaviour
         {
             _velocity.y += Mathf.Sqrt(2 * Physics.gravity.magnitude * _jumpHeight);
             Jump = false;
-            _isJumping = true;
+            IsJumping = true;
         }
     }
 

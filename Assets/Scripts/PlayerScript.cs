@@ -10,8 +10,8 @@ public class PlayerScript : MonoBehaviour
     [Header("General")]
     [SerializeField] [Range(1, 2)] private int _playerNumber=1;
     [SerializeField] private int _maxHealth = 0;
-    [SerializeField] private float _flinchTime=0;
-    [SerializeField] private float _knockbackForce = 10;
+    [SerializeField] private float _flinchTimeReceivedModifier = 0.5f;
+    [SerializeField] private float _knockbackReceivedModifier = 0;
     [SerializeField] private bool _canControlDuringAttack = false;
 
     [Header("Attack fields")]
@@ -19,14 +19,26 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private AttackCollider[] _attackColliders;
     public float AttackDuration = 0;
     [SerializeField] private Vector2 _attackDamageTimeRange=Vector2.zero;
+
+    [SerializeField] private float _customKnockbackAttack = -1;
+    [SerializeField] private float _customFlinchAttack = -1;
     [SerializeField] private bool _useAttackMotion=false;
+    [SerializeField] private float _freezeAttack = 0.1f;
+    [SerializeField] private float _shakeAttack = 0.04f;
+    [SerializeField] private GameObject _bullet;
+    [SerializeField] private Transform _bulletSpawn;
+    [SerializeField] private float _bulletDelayTime;
 
     [Header("Special attack fields")]
     [SerializeField] private int _specialAttackDamage=0;
     [SerializeField] private AttackCollider[] _specialAttackColliders;
     public float SpecialAttackDuration = 0;
     [SerializeField] private Vector2 _specialAttackDamageTimeRange=Vector2.zero;
+    [SerializeField] private float _customKnockbackSpecialAttack = -1;
+    [SerializeField] private float _customFlinchSpecialAttack = -1;
     [SerializeField] private bool _useSpecialAttackMotion=false;
+    [SerializeField] private float _freezeSpecial = 0.3f;
+    [SerializeField] private float _shakeSpecial = 0.2f;
 
     public int MaxHealth { get => _maxHealth; }
     public int Health { get; private set; }
@@ -39,10 +51,13 @@ public class PlayerScript : MonoBehaviour
 
     public float AttackCooldownTimer { get; set; }
     public float SpecialAttackCooldownTimer { get; set; }
+    public bool SpecialAttacking { get; private set; }
+
     private Coroutine _generalAttackCoroutine;
     //private float _flinchTimer = 0;
     private bool _isFlinched=false;
     private bool _isDead;
+    private float _bulletDelayTimer;
 
     void Start()
     {
@@ -110,7 +125,7 @@ public class PlayerScript : MonoBehaviour
         if (_generalAttackCoroutine == null && InputController.IsSpecialAttackButtonPressed(_playerNumber))
         {
             SpecialAttack();
-        }
+            }
         SpecialAttackCooldownTimer += Time.deltaTime;
     }
 
@@ -164,23 +179,40 @@ public class PlayerScript : MonoBehaviour
 
         while (timer < _attackDamageTimeRange.y)
         {
-            if (!hasLandedHit)
-            {
-                foreach (AttackCollider attackCollider in _attackColliders)
+            if (!_bullet)
                 {
-                    PlayerScript opponent = attackCollider.Opponent;
-                    if (opponent != null)
+                //regular attack
+                if (!hasLandedHit)
                     {
-                        opponent.TakeDamage(_attackDamage, attackCollider.HitOrigin);
-                        hasLandedHit = true;
-                        break;
+                    foreach (AttackCollider attackCollider in _attackColliders)
+                        {
+                        PlayerScript opponent = attackCollider.Opponent;
+                        if (opponent != null)
+                            {
+                            opponent.TakeDamage(_attackDamage, attackCollider.HitOrigin, _customKnockbackAttack, _customFlinchAttack);
+                            hasLandedHit = true;
+                            AttackHitEffect();
+                            break;
+                            }
+                        }
                     }
                 }
-            }
+            else if (_bulletDelayTimer <= 0)
+                {
+                _bulletDelayTimer = _bulletDelayTime;
+                BulletScript bullet = Instantiate(_bullet).transform.Find("Col").GetComponent<BulletScript>();
+                bullet.transform.parent.position = _bulletSpawn.position;
+                bullet.transform.parent.rotation = _bulletSpawn.rotation;
+                bullet.Damage = _attackDamage;
+                bullet.Owner = this;
+                bullet.CustomKnockback = _customKnockbackAttack;
+                }
 
+            _bulletDelayTimer -= Time.deltaTime;
             timer += Time.deltaTime;
             yield return null;
         }
+        _bulletDelayTimer = 0;
 
         while (timer < AttackDuration)
         {
@@ -213,17 +245,21 @@ public class PlayerScript : MonoBehaviour
                 {
                     PlayerScript opponent = specialAttackCollider.Opponent;
                     if (opponent != null)
-                    {
-                        opponent.TakeDamage(_specialAttackDamage, specialAttackCollider.HitOrigin);
+                        {
+                        opponent.TakeDamage(_specialAttackDamage, specialAttackCollider.HitOrigin, _customKnockbackSpecialAttack, _customFlinchSpecialAttack);
                         hasLandedHit = true;
+                        SpecialAttackHitEffect();
                         break;
+                        }
                     }
-                }
             }
+            SpecialAttacking = true;
 
             timer += Time.deltaTime;
             yield return null;
         }
+        SpecialAttacking = false;
+
 
         while (timer < SpecialAttackDuration)
         {
@@ -235,27 +271,42 @@ public class PlayerScript : MonoBehaviour
         UseAnimationMotion(false);
     }
 
-    public void TakeDamage(int damage, Vector3 origin)
+    private void SpecialAttackHitEffect()
+        {
+        FixedTime.FreezeTime(_freezeSpecial);
+        CameraScript.Shake(_shakeAttack);
+        }
+
+    public void TakeDamage(int damage, Vector3 origin, float customKnockback = -1, float customFlinch = -1)
     {
         if (_generalAttackCoroutine != null)
         {
             UseAnimationMotion(false);
             StopCoroutine(_generalAttackCoroutine);
         }
+        
 
-        //_flinchTimer = 0;
-        StartCoroutine(Flinch());
-        _physicsController.TakeKnockBack(_knockbackForce, origin);
+        float flinch = _flinchTimeReceivedModifier;
+        if (customFlinch != -1) flinch += customFlinch;
+        if (flinch < 0) flinch = 0;
+        StartCoroutine(Flinch(flinch));
+
+        //knockback
+        float knockback = _knockbackReceivedModifier;
+        if (customKnockback != -1) knockback += customKnockback;
+        if (knockback < 0) knockback = 0;
+        _physicsController.TakeKnockBack(knockback , origin);
+
         _animationsController.TakeDamage();
         Health -= damage;
         Die();
         Debug.Log("DAMAGE");
     }
 
-    private IEnumerator Flinch()
+    private IEnumerator Flinch(float time)
     {
         _isFlinched = true;
-        yield return new WaitForSeconds(_flinchTime);
+        yield return new WaitForSeconds(time);
 
         _isFlinched = false;
         _animationsController.Recover();
@@ -275,5 +326,11 @@ public class PlayerScript : MonoBehaviour
     {
         Gizmos.DrawRay(transform.position + Vector3.up, transform.forward);
     }
+
+    public void AttackHitEffect()
+        {
+        FixedTime.FreezeTime(_freezeAttack);
+        CameraScript.Shake(_shakeAttack);
+        }
 
 }

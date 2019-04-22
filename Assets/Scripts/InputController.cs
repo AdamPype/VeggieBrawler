@@ -51,6 +51,14 @@ public static class InputController
         return new Vector3(h, 0, v);
     }
 
+    public static Vector3 GetRawLeftJoystickFromPlayer(int controller)
+        {
+        float h = GetHorizontalMovement(controller);
+        float v = Input.GetAxisRaw("C" + controller + "_LeftJoystickY");
+
+        return new Vector3(h, 0, v);
+        }
+
     public static bool IsAButtonPressed(int controller)
     {
         return Input.GetButtonDown("C" + controller + "_AButton");

@@ -69,6 +69,7 @@ public class GameUIManager : MonoBehaviour
 
     private void ShowEndGameUI()
     {
-        UILerper.LerpUI(EndGameUI,new Vector2(0,EndGameUI.anchoredPosition.y),10f);
+        EndGameUI.gameObject.SetActive(true);
+        //UILerper.LerpUI(EndGameUI,new Vector2(0,EndGameUI.anchoredPosition.y),10f);
     }
 }
