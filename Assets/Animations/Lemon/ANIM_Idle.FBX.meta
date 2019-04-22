@@ -1,0 +1,183 @@
+fileFormatVersion: 2
+guid: c657ff532a4e829459ce927a55250b33
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Base Human
+    100004: Base HumanLArm003
+    100006: Base HumanLArm004
+    100008: Base HumanLArm005
+    100010: Base HumanLArm006
+    100012: Base HumanLArm007
+    100014: Base HumanLArm008
+    100016: Base HumanLArm1
+    100018: Base HumanLArm2
+    100020: Base HumanLArmCollarbone
+    100022: Base HumanLArmCollarbone001
+    100024: Base HumanLArmCollarbone002
+    100026: Base HumanLArmCollarbone003
+    100028: Base HumanLCalf
+    100030: Base HumanLFoot
+    100032: Base HumanLPlatform
+    100034: Base HumanLThigh
+    100036: Base HumanPelvis
+    100038: Base HumanRLegCalf
+    100040: Base HumanRLegFoot
+    100042: Base HumanRLegPlatform
+    100044: Base HumanRLegThigh
+    100046: LemonCharacter
+    400000: //RootNode
+    400002: Base Human
+    400004: Base HumanLArm003
+    400006: Base HumanLArm004
+    400008: Base HumanLArm005
+    400010: Base HumanLArm006
+    400012: Base HumanLArm007
+    400014: Base HumanLArm008
+    400016: Base HumanLArm1
+    400018: Base HumanLArm2
+    400020: Base HumanLArmCollarbone
+    400022: Base HumanLArmCollarbone001
+    400024: Base HumanLArmCollarbone002
+    400026: Base HumanLArmCollarbone003
+    400028: Base HumanLCalf
+    400030: Base HumanLFoot
+    400032: Base HumanLPlatform
+    400034: Base HumanLThigh
+    400036: Base HumanPelvis
+    400038: Base HumanRLegCalf
+    400040: Base HumanRLegFoot
+    400042: Base HumanRLegPlatform
+    400044: Base HumanRLegThigh
+    400046: LemonCharacter
+    2100000: 'Material #25'
+    2100002: 'Material #26'
+    4300000: LemonCharacter
+    7400000: Lemon_Idle
+    9500000: //RootNode
+    13700000: LemonCharacter
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #25'
+    second: {fileID: 2100000, guid: 5fb30370d5d959141b8d5e96db76ab6f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #26'
+    second: {fileID: 2100000, guid: 5d62e16b7f1cc3547b5dda70a06219f3, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Lemon_Idle
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.0254
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

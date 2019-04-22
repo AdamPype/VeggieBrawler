@@ -2151,7 +2151,7 @@ MonoBehaviour:
   _useAttackMotion: 0
   _freezeAttack: 0.1
   _shakeAttack: 0.3
-  _bullet: {fileID: 5637027151028574126, guid: 44719d81c7958cb48b717edf0d8c3a7b, type: 3}
+  _bullet: {fileID: 5637027151028574126, guid: bcc82a4b0c0d9ab44a45b98152c4720d, type: 3}
   _bulletSpawn: {fileID: 3477072778430151574}
   _bulletDelayTime: 0.01
   _specialAttackDamage: 25
