@@ -182,7 +182,7 @@ Transform:
   m_GameObject: {fileID: 390537371922280665}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.61822, y: 0.61822, z: 0.61822}
   m_Children:
   - {fileID: 390537371296970272}
   - {fileID: 390537371693734555}
@@ -216,7 +216,7 @@ MonoBehaviour:
   _customKnockbackAttack: 5
   _customFlinchAttack: 0
   _useAttackMotion: 0
-  _freezeAttack: 0.1
+  _freezeAttack: 0
   _shakeAttack: 0.3
   _bullet: {fileID: 5637027151028574126, guid: 44719d81c7958cb48b717edf0d8c3a7b, type: 3}
   _bulletSpawn: {fileID: 587382804273717591}
@@ -224,8 +224,8 @@ MonoBehaviour:
   _specialAttackDamage: 25
   _specialAttackColliders:
   - {fileID: 2127928930995106704}
-  SpecialAttackDuration: 10
-  _specialAttackDamageTimeRange: {x: 0.1, y: 2.5}
+  SpecialAttackDuration: 3
+  _specialAttackDamageTimeRange: {x: 1, y: 2.5}
   _customKnockbackSpecialAttack: 0
   _customFlinchSpecialAttack: 0.4
   _useSpecialAttackMotion: 0
@@ -344,6 +344,38 @@ Transform:
   m_Father: {fileID: 390537371922280661}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &686270370476132137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7968710498266596826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a63b3d0acdaf0d14384264f9af8dff82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parentPhysics: {fileID: 3086120947688668918}
+  _model: {fileID: 7968710498266700218}
+--- !u!114 &8100504579903679209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7968710498266596826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294b84415d122954ab56d7613fd05713, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _squishSlowdownSpeed: 0.1
+  _squichinessLength: 1.2
+  _squishSpeed: 1.2
+  _lerpSpeed: 1
+  _squishSize: 1
+  _worldSpace: 0
 --- !u!1001 &5115467432058817857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -511,6 +543,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e9da1ef7ee810346b330ac31b3d8bcd, type: 3}
+--- !u!1 &7968710498266596826 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100046, guid: 2e9da1ef7ee810346b330ac31b3d8bcd,
+    type: 3}
+  m_PrefabInstance: {fileID: 7968710498266563348}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7968710498266700218 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400046, guid: 2e9da1ef7ee810346b330ac31b3d8bcd,

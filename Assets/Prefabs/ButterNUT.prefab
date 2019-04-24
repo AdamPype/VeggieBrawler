@@ -2149,12 +2149,12 @@ MonoBehaviour:
   _customKnockbackAttack: 5
   _customFlinchAttack: 0
   _useAttackMotion: 0
-  _freezeAttack: 0.1
+  _freezeAttack: 0
   _shakeAttack: 0.3
   _bullet: {fileID: 5637027151028574126, guid: bcc82a4b0c0d9ab44a45b98152c4720d, type: 3}
   _bulletSpawn: {fileID: 3477072778430151574}
   _bulletDelayTime: 0.01
-  _specialAttackDamage: 25
+  _specialAttackDamage: 10
   _specialAttackColliders:
   - {fileID: 6625684295517197915}
   SpecialAttackDuration: 3
@@ -2349,10 +2349,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1334626908298440533}
     m_Modifications:
-    - target: {fileID: 100000, guid: 73dd70efe5a62444f98ac53f66cef941, type: 3}
-      propertyPath: m_Name
-      value: spikes
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 73dd70efe5a62444f98ac53f66cef941, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2408,6 +2404,10 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 73dd70efe5a62444f98ac53f66cef941, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 73dd70efe5a62444f98ac53f66cef941, type: 3}
+      propertyPath: m_Name
+      value: spikes
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73dd70efe5a62444f98ac53f66cef941, type: 3}

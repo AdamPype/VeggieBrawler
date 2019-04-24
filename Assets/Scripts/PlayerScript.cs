@@ -283,6 +283,7 @@ public class PlayerScript : MonoBehaviour
         {
             UseAnimationMotion(false);
             StopCoroutine(_generalAttackCoroutine);
+            _generalAttackCoroutine = null;
         }
         
 
