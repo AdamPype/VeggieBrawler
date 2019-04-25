@@ -26,8 +26,12 @@ public class GameControllerScript : MonoBehaviour
     [HideInInspector] public GameObject Player2;
     [HideInInspector] public GameObject SpawnedPlayer1;
     [HideInInspector] public GameObject SpawnedPlayer2;
-
+    
     [SerializeField] private int _winScreenBuildIndex;
+
+    [Header("References")]
+    public GameUIManager UIManager;
+    public CameraScript Camera;
 
     private int player = 1;
 
@@ -97,6 +101,8 @@ public class GameControllerScript : MonoBehaviour
 
         spawnedPlayer.GetComponent<PlayerScript>().PlayerNumber = this.player;  //Set player number (1 or 2)
 
+        spawnedPlayer.GetComponent<PlayerScript>().Controller = this;
+
         CameraScript temp = GameObject.Find("Main Camera").GetComponent<CameraScript>();
         temp.ObjectsToTrack.Add(spawnedPlayer.transform); //Add player to objects that should be tracked by camera
 
@@ -152,6 +158,21 @@ public class GameControllerScript : MonoBehaviour
         Winner = losingPlayerNumber + 1;
         StartCoroutine(EndGameEnumerator()); 
     }
+
+    public void RespawnPlayer(PlayerScript newPlayer)
+        {
+        Camera.ObjectsToTrack.Add(newPlayer.transform);
+        if (newPlayer.PlayerNumber == 1)
+            {
+            UIManager.Player1 = newPlayer.gameObject;
+            }
+        else
+            {
+            UIManager.Player2 = newPlayer.gameObject;
+            }
+        newPlayer.Controller = this;
+        EnableCharacterScripts(newPlayer.gameObject);
+        }
 }
 
     

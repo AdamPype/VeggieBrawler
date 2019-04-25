@@ -14,6 +14,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float _knockbackReceivedModifier = 0;
     [SerializeField] private bool _canControlDuringAttack = false;
 
+    [SerializeField] private GameObject _switchOnSpecial;
+
     [Header("Attack fields")]
     [SerializeField] private int _attackDamage=0;
     [SerializeField] private AttackCollider[] _attackColliders;
@@ -58,6 +60,9 @@ public class PlayerScript : MonoBehaviour
     private bool _isFlinched=false;
     private bool _isDead;
     private float _bulletDelayTimer;
+
+    //refernces
+    [HideInInspector] public GameControllerScript Controller;
 
     void Start()
     {
@@ -124,7 +129,8 @@ public class PlayerScript : MonoBehaviour
     {
         if (_generalAttackCoroutine == null && InputController.IsSpecialAttackButtonPressed(_playerNumber))
         {
-            SpecialAttack();
+            
+                SpecialAttack();
             }
         SpecialAttackCooldownTimer += Time.deltaTime;
     }
@@ -266,6 +272,18 @@ public class PlayerScript : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
+
+        if (_switchOnSpecial)
+            {
+            PlayerScript player = Instantiate(_switchOnSpecial).GetComponent<PlayerScript>();
+            player.transform.position = transform.position;
+            player.transform.rotation = transform.rotation;
+            player.Health = Health;
+            player.PlayerNumber = PlayerNumber;
+            Destroy(gameObject);
+            Controller.RespawnPlayer(player);
+            //player.TakeDamage(_specialAttackDamage, player.transform.position, 0, _customFlinchSpecialAttack);
+            }
 
         _generalAttackCoroutine = null;
         UseAnimationMotion(false);

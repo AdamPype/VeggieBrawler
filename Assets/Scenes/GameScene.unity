@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21186364, g: 0.21312621, b: 0.21698111, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1494,11 +1494,11 @@ RectTransform:
   m_Father: {fileID: 85323905}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 371.4, y: 1.4000463}
-  m_SizeDelta: {x: 504.2, y: 126.2}
-  m_Pivot: {x: 0, y: 1}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -213.7, y: 0}
+  m_SizeDelta: {x: 504.19995, y: 126.2}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &764079791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1532,7 +1532,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Player 1
+  m_Text: Player 2
 --- !u!222 &764079792
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1577,8 +1577,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.16500854, y: -4.5}
-  m_SizeDelta: {x: -38.53, y: -41.600006}
+  m_AnchoredPosition: {x: -0.58999634, y: -4.3550034}
+  m_SizeDelta: {x: -21.820002, y: -37.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &924120444
 MonoBehaviour:
@@ -1697,7 +1697,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 423, y: -98}
+  m_AnchoredPosition: {x: 422.06, y: -95.2}
   m_SizeDelta: {x: 701.58, y: 195.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &935183299
@@ -1713,7 +1713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21186364, g: 0.21312621, b: 0.21698111, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2640,8 +2640,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.10998535, y: -1.3849182}
-  m_SizeDelta: {x: -22.520054, y: -20.809998}
+  m_AnchoredPosition: {x: 0, y: -1.1500015}
+  m_SizeDelta: {x: -0.40000004, y: -4.5000005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1691535816
 MonoBehaviour:
@@ -2790,8 +2790,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.16500854, y: -4.5}
-  m_SizeDelta: {x: -38.53, y: -41.600006}
+  m_AnchoredPosition: {x: -0.58999634, y: -4.3550034}
+  m_SizeDelta: {x: -21.820002, y: -37.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1715173001
 MonoBehaviour:
@@ -2968,8 +2968,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.12487793, y: -1.3849792}
-  m_SizeDelta: {x: -22.550049, y: -20.809998}
+  m_AnchoredPosition: {x: 0, y: -1.1500015}
+  m_SizeDelta: {x: -0.40000004, y: -4.5000005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1983002940
 MonoBehaviour:
@@ -3167,13 +3167,23 @@ PrefabInstance:
     - target: {fileID: 5723424448094879017, guid: ada5f4a2b9881974e9e1cdf3ba70845e,
         type: 3}
       propertyPath: DebugMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5723424448094879017, guid: ada5f4a2b9881974e9e1cdf3ba70845e,
         type: 3}
       propertyPath: BasePlayerPrefab
       value: 
-      objectReference: {fileID: 390537371922280665, guid: 12be0bf264e189447a33c1d38f3a122f,
+      objectReference: {fileID: 4727529448679902241, guid: 12182b04c6fe3654a96ea7829da70241,
         type: 3}
+    - target: {fileID: 5723424448094879017, guid: ada5f4a2b9881974e9e1cdf3ba70845e,
+        type: 3}
+      propertyPath: UIManager
+      value: 
+      objectReference: {fileID: 392738476}
+    - target: {fileID: 5723424448094879017, guid: ada5f4a2b9881974e9e1cdf3ba70845e,
+        type: 3}
+      propertyPath: Camera
+      value: 
+      objectReference: {fileID: 524629183}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ada5f4a2b9881974e9e1cdf3ba70845e, type: 3}

@@ -26,6 +26,14 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        for (int i = 0; i < ObjectsToTrack.Count; i++)
+            {
+            if (ObjectsToTrack[i] == null)
+                {
+                ObjectsToTrack.RemoveAt(i);
+                }
+            }
+
         //tracking
         transform.position = Vector3.SmoothDamp(transform.position, GetBoundsCenter() + _offset, ref _vel, _followSpeed * Time.deltaTime);
 
