@@ -209,6 +209,7 @@ MonoBehaviour:
   _flinchTimeReceivedModifier: 0.5
   _knockbackReceivedModifier: 0
   _canControlDuringAttack: 0
+  _switchOnSpecial: {fileID: 0}
   _attackDamage: 3
   _attackColliders: []
   AttackDuration: 0.0001
@@ -225,12 +226,13 @@ MonoBehaviour:
   _specialAttackColliders:
   - {fileID: 2127928930995106704}
   SpecialAttackDuration: 3
-  _specialAttackDamageTimeRange: {x: 1, y: 2.5}
+  _specialAttackDamageTimeRange: {x: 2, y: 2.5}
   _customKnockbackSpecialAttack: 0
   _customFlinchSpecialAttack: 0.4
   _useSpecialAttackMotion: 0
   _freezeSpecial: 0.3
   _shakeSpecial: 3
+  Controller: {fileID: 0}
 --- !u!114 &3086120947688668918
 MonoBehaviour:
   m_ObjectHideFlags: 0
