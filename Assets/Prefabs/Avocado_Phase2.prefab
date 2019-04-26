@@ -241,7 +241,7 @@ MonoBehaviour:
   _canControlDuringAttack: 0
   _switchOnSpecial: {fileID: 4727529448679902241, guid: 12182b04c6fe3654a96ea7829da70241,
     type: 3}
-  _attackDamage: 20
+  _attackDamage: 30
   _attackColliders:
   - {fileID: 798851094110719808}
   AttackDuration: 3
@@ -250,7 +250,7 @@ MonoBehaviour:
   _customFlinchAttack: -1
   _useAttackMotion: 0
   _freezeAttack: 0.15
-  _shakeAttack: 2
+  _shakeAttack: 4
   _bullet: {fileID: 0}
   _bulletSpawn: {fileID: 0}
   _bulletDelayTime: 0.01
@@ -319,7 +319,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 88
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!136 &4727529448679902254
 CapsuleCollider:

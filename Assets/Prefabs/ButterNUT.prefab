@@ -1699,7 +1699,7 @@ Transform:
   m_GameObject: {fileID: 1076894379939779970}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7108, y: 1.7108, z: 1.7108}
+  m_LocalScale: {x: 2.3953664, y: 2.3953664, z: 2.3953664}
   m_Children:
   - {fileID: 1076894379939678218}
   - {fileID: 1076894379939678240}
@@ -2115,7 +2115,7 @@ Transform:
   m_GameObject: {fileID: 4727529448679902241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1076894379939678306}
   - {fileID: 4727529448022805208}
@@ -2140,6 +2140,7 @@ MonoBehaviour:
   _flinchTimeReceivedModifier: 0.5
   _knockbackReceivedModifier: 0
   _canControlDuringAttack: 0
+  _switchOnSpecial: {fileID: 0}
   _attackDamage: 3
   _attackColliders:
   - {fileID: 0}
@@ -2164,6 +2165,7 @@ MonoBehaviour:
   _useSpecialAttackMotion: 0
   _freezeSpecial: 0.3
   _shakeSpecial: 3
+  Controller: {fileID: 0}
 --- !u!114 &7936719069270327822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2219,7 +2221,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 88
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!136 &4727529448679902254
 CapsuleCollider:
@@ -2231,10 +2233,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.24
-  m_Height: 2.09
+  m_Radius: 0.50168514
+  m_Height: 2.91574
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: -0.08}
+  m_Center: {x: 0, y: 1.4128699, z: 0.062277675}
 --- !u!114 &4763263166736024313
 MonoBehaviour:
   m_ObjectHideFlags: 0
