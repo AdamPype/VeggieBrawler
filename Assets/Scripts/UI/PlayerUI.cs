@@ -24,6 +24,8 @@ public class PlayerUI : MonoBehaviour
 
     private GameObject _instantiatedCharacter;
 
+    public SoundManager UISoundManager;
+
     //juice
     private float _maxAmplitude = 30;
     private float _amplitude;
@@ -104,6 +106,8 @@ public class PlayerUI : MonoBehaviour
 
         if (Element != null && Element.tag == "CharacterUI" && ChosenCharacter==null)
         {
+            UISoundManager.PlaySimple("Select");
+
             ChosenCharacter = Element.GetComponent<CharacterTemplate>().Character;    //Get Gameobject
 
             DisableCharacterScripts(ChosenCharacter);    //Disable certain script since we just want to visualize the character 
@@ -145,6 +149,8 @@ public class PlayerUI : MonoBehaviour
 
     private void UnLoadCharacter()
     {
+        UISoundManager.PlaySimple("Cancel");
+
         Destroy(_instantiatedCharacter);
         ChosenCharacter = null;
         AllowMouseMovement = true;

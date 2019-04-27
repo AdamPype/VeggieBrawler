@@ -61,6 +61,8 @@ public class PlayerScript : MonoBehaviour
     private bool _isDead;
     private float _bulletDelayTimer;
 
+    public SoundManager CharacterSound;
+
     //refernces
     [HideInInspector] public GameControllerScript Controller;
 
@@ -96,6 +98,7 @@ public class PlayerScript : MonoBehaviour
                 if (InputController.IsJumpButtonPressed(_playerNumber) && _physicsController.IsGrounded())
                 {
                     _physicsController.Jump = true;
+                    CharacterSound.PlaySimple("Jump");
                 }
 
                 TryAttack();
@@ -137,6 +140,7 @@ public class PlayerScript : MonoBehaviour
 
     private void Attack()
     {
+        CharacterSound.PlaySimple("Attack");
         StartAttackCoroutine(TryAttackDamageOpponent());
 
         UseAnimationMotion(_useAttackMotion);
@@ -146,6 +150,7 @@ public class PlayerScript : MonoBehaviour
 
     private void SpecialAttack()
     {
+        CharacterSound.PlaySimple("SpecialAttack");
         StartAttackCoroutine(TrySpecialAttackDamageOpponent());
 
         UseAnimationMotion(_useSpecialAttackMotion);
@@ -297,6 +302,7 @@ public class PlayerScript : MonoBehaviour
 
     public void TakeDamage(int damage, Vector3 origin, float customKnockback = -1, float customFlinch = -1)
     {
+        CharacterSound.PlaySimple("Hit");
         if (_generalAttackCoroutine != null)
         {
             UseAnimationMotion(false);

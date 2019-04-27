@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 390537371922280663}
   - component: {fileID: 498346819516005889}
   - component: {fileID: 9052442098896325522}
+  - component: {fileID: 1199456228218294281}
   m_Layer: 9
   m_Name: Lemon
   m_TagString: Untagged
@@ -233,6 +234,7 @@ MonoBehaviour:
   _freezeSpecial: 0.3
   _shakeSpecial: 3
   _isFlinched: 0
+  CharacterSound: {fileID: 1199456228218294281}
   Controller: {fileID: 0}
 --- !u!114 &3086120947688668918
 MonoBehaviour:
@@ -317,6 +319,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.802933, z: 2.8953488}
   m_Center: {x: 3.5792097e-16, y: 0.7605468, z: -0.09981352}
+--- !u!114 &1199456228218294281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390537371922280665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a81eac185ad8b504fac95c6db7604d87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sounds:
+  - {fileID: 8300000, guid: 3cbcaa4b02c0756448cb0391f7af6a4a, type: 3}
+  - {fileID: 8300000, guid: 4bc7c5b683939c44792711f98f63b7a9, type: 3}
+  - {fileID: 8300000, guid: 69322f2db8775f045a7731338b583be1, type: 3}
+  - {fileID: 8300000, guid: 596fda7509ae997448bf5163a18b13eb, type: 3}
+  _names:
+  - Jump
+  - Attack
+  - SpecialAttack
+  - Hit
 --- !u!1 &1423691382892608876
 GameObject:
   m_ObjectHideFlags: 0

@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 4727529448679902255}
   - component: {fileID: 4727529448679902254}
   - component: {fileID: 4763263166736024313}
+  - component: {fileID: 3948624401089872064}
   m_Layer: 9
   m_Name: Avocado_Phase2
   m_TagString: Untagged
@@ -263,6 +264,8 @@ MonoBehaviour:
   _useSpecialAttackMotion: 0
   _freezeSpecial: 0.3
   _shakeSpecial: 3
+  _isFlinched: 0
+  CharacterSound: {fileID: 3948624401089872064}
   Controller: {fileID: 0}
 --- !u!114 &7936719069270327822
 MonoBehaviour:
@@ -348,6 +351,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterSprite: {fileID: 21300000, guid: 78a8e9be2b2b84a43991c3cc37abcf94, type: 3}
+--- !u!114 &3948624401089872064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4727529448679902241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a81eac185ad8b504fac95c6db7604d87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sounds:
+  - {fileID: 8300000, guid: 3cbcaa4b02c0756448cb0391f7af6a4a, type: 3}
+  - {fileID: 8300000, guid: 5fe5806a92db1ab4d80bf70b215226b1, type: 3}
+  - {fileID: 8300000, guid: 4eca29bd1191ede4593bc03949710e93, type: 3}
+  - {fileID: 8300000, guid: 596fda7509ae997448bf5163a18b13eb, type: 3}
+  _names:
+  - Jump
+  - Attack
+  - SpecialAttack
+  - Hit
 --- !u!65 &3484579348757311802
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -368,10 +393,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4727529448679902253}
     m_Modifications:
-    - target: {fileID: 100054, guid: 397429f604818514fb2f9b22386120bf, type: 3}
-      propertyPath: m_Name
-      value: AvocadoIdlePhase2
-      objectReference: {fileID: 0}
     - target: {fileID: 400054, guid: 397429f604818514fb2f9b22386120bf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -427,6 +448,10 @@ PrefabInstance:
     - target: {fileID: 400054, guid: 397429f604818514fb2f9b22386120bf, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 100054, guid: 397429f604818514fb2f9b22386120bf, type: 3}
+      propertyPath: m_Name
+      value: AvocadoIdlePhase2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 397429f604818514fb2f9b22386120bf, type: 3}

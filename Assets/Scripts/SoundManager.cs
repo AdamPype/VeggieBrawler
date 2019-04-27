@@ -83,6 +83,18 @@ public class SoundManager : MonoBehaviour {
         _audioSources.Add(audio);
         }
 
+    public void PlaySimple(string soundName, float pitch)
+    {
+        //makes a new audiosource component on the object and gives it the right settings
+        AudioSource audio = gameObject.AddComponent<AudioSource>();
+        audio.clip = _sounds[Array.IndexOf(_names, soundName)];
+        audio.spatialBlend = 0;
+        //plays the audio
+        audio.Play();
+        //add it to the active audio list
+        _audioSources.Add(audio);
+    }
+
     /// <summary>
     /// Stops all playing instances of a sound.
     /// </summary>

@@ -2099,6 +2099,7 @@ GameObject:
   - component: {fileID: 4727529448679902255}
   - component: {fileID: 4727529448679902254}
   - component: {fileID: 4763263166736024313}
+  - component: {fileID: 1939602228699372635}
   m_Layer: 9
   m_Name: ButterNUT
   m_TagString: Untagged
@@ -2165,6 +2166,8 @@ MonoBehaviour:
   _useSpecialAttackMotion: 0
   _freezeSpecial: 0.3
   _shakeSpecial: 3
+  _isFlinched: 0
+  CharacterSound: {fileID: 1939602228699372635}
   Controller: {fileID: 0}
 --- !u!114 &7936719069270327822
 MonoBehaviour:
@@ -2250,6 +2253,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterSprite: {fileID: 21300000, guid: 78a8e9be2b2b84a43991c3cc37abcf94, type: 3}
+--- !u!114 &1939602228699372635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4727529448679902241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a81eac185ad8b504fac95c6db7604d87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sounds:
+  - {fileID: 8300000, guid: 3cbcaa4b02c0756448cb0391f7af6a4a, type: 3}
+  - {fileID: 8300000, guid: 02bc24fd532e2234e9ff75775205c484, type: 3}
+  - {fileID: 8300000, guid: 4de3f2e8ea0b39f488c91ce96cf5d798, type: 3}
+  - {fileID: 8300000, guid: 596fda7509ae997448bf5163a18b13eb, type: 3}
+  _names:
+  - Jump
+  - Attack
+  - SpecialAttack
+  - Hit
 --- !u!1001 &38577822542899338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2320,15 +2345,15 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 959788059802964662, guid: 16e9d8a4e5e3111449276ff9b7fccf9d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 16e9d8a4e5e3111449276ff9b7fccf9d, type: 3}
---- !u!1 &704041797718052672 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 669994126319790026, guid: 16e9d8a4e5e3111449276ff9b7fccf9d,
-    type: 3}
-  m_PrefabInstance: {fileID: 38577822542899338}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1617985278187246053 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1656536703856884079, guid: 16e9d8a4e5e3111449276ff9b7fccf9d,
+    type: 3}
+  m_PrefabInstance: {fileID: 38577822542899338}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &704041797718052672 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 669994126319790026, guid: 16e9d8a4e5e3111449276ff9b7fccf9d,
     type: 3}
   m_PrefabInstance: {fileID: 38577822542899338}
   m_PrefabAsset: {fileID: 0}

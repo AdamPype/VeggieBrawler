@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 4727529448679902255}
   - component: {fileID: 4727529448679902254}
   - component: {fileID: 4763263166736024313}
+  - component: {fileID: 8118463264130073902}
   m_Layer: 9
   m_Name: Turnip
   m_TagString: Untagged
@@ -231,6 +232,8 @@ MonoBehaviour:
   _useSpecialAttackMotion: 0
   _freezeSpecial: 0.1
   _shakeSpecial: 1
+  _isFlinched: 0
+  CharacterSound: {fileID: 8118463264130073902}
   Controller: {fileID: 0}
 --- !u!114 &7936719069270327822
 MonoBehaviour:
@@ -316,6 +319,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterSprite: {fileID: 21300000, guid: 78a8e9be2b2b84a43991c3cc37abcf94, type: 3}
+--- !u!114 &8118463264130073902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4727529448679902241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a81eac185ad8b504fac95c6db7604d87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sounds:
+  - {fileID: 8300000, guid: 3cbcaa4b02c0756448cb0391f7af6a4a, type: 3}
+  - {fileID: 8300000, guid: b41dc1e574e7d6e409e649473db824fa, type: 3}
+  - {fileID: 8300000, guid: 03632c52295a40d41bc6d4c3f2c3aefe, type: 3}
+  - {fileID: 8300000, guid: 596fda7509ae997448bf5163a18b13eb, type: 3}
+  _names:
+  - Jump
+  - Attack
+  - SpecialAttack
+  - Hit
 --- !u!114 &2930566849281369160
 MonoBehaviour:
   m_ObjectHideFlags: 0

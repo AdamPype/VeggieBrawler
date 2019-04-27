@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2112,6 +2112,7 @@ GameObject:
   - component: {fileID: 1797464155}
   - component: {fileID: 1797464156}
   - component: {fileID: 1797464157}
+  - component: {fileID: 1797464158}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -2218,6 +2219,7 @@ MonoBehaviour:
   Border: {fileID: 1397518227}
   NameSpace: {fileID: 1700140727}
   ChosenCharacter: {fileID: 0}
+  UISoundManager: {fileID: 1797464158}
 --- !u!114 &1797464156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2237,6 +2239,7 @@ MonoBehaviour:
   Border: {fileID: 2096265607}
   NameSpace: {fileID: 1530951282}
   ChosenCharacter: {fileID: 0}
+  UISoundManager: {fileID: 1797464158}
 --- !u!114 &1797464157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2256,6 +2259,26 @@ MonoBehaviour:
   AreCharactersChosen:
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &1797464158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797464150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a81eac185ad8b504fac95c6db7604d87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sounds:
+  - {fileID: 8300000, guid: 545b02fb872c64344b3509ff39282bde, type: 3}
+  - {fileID: 8300000, guid: 7930a661b02cff14599fb7b8fbb3bd8f, type: 3}
+  - {fileID: 8300000, guid: 401793b5cedda0c418fb93d760f5d552, type: 3}
+  _names:
+  - Select
+  - Continue
+  - Cancel
 --- !u!1 &1832245133
 GameObject:
   m_ObjectHideFlags: 0

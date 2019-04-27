@@ -14,6 +14,7 @@ public class CharacterSelectManager : MonoBehaviour
     public RectTransform StartGameUI;
     public PlayerUI[] AreCharactersChosen = new PlayerUI[2];
 
+
     private Vector2 _originalUIPos;
     private bool _allowStartGame;
     void Awake()
@@ -46,6 +47,7 @@ public class CharacterSelectManager : MonoBehaviour
 
     private void StartGame()
     {
+        AreCharactersChosen[0].UISoundManager.PlaySimple("Continue");
         //Save Chosen Characters And Go To Game Scene 
         for (int i = 0; i < AreCharactersChosen.Length; i++)
         {
