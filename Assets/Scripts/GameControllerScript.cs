@@ -10,7 +10,7 @@ public class GameControllerScript : MonoBehaviour
     public static GameControllerScript Instance { get; private set; }
 
     public bool DebugMode;
-    public GameObject BasePlayerPrefab; //Used when starting in GameScene instead of coming from CharacterSelect
+    public GameObject[] BasePlayerPrefab; //Used when starting in GameScene instead of coming from CharacterSelect
 
     public float TimeRemaining;
     public float TimeUntilGameStart;
@@ -95,7 +95,7 @@ public class GameControllerScript : MonoBehaviour
 
     private void CreatePlayer(out GameObject player,out GameObject spawnedPlayer,Transform spawnPoint)
     {
-        player = !DebugMode ? FindObjectOfType<ChosenCharactersSaver>().ChosenCharacters[this.player-1] : BasePlayerPrefab; //get the player prefab (or spawn Base prefab when in Debug Mode)
+        player = !DebugMode ? FindObjectOfType<ChosenCharactersSaver>().ChosenCharacters[this.player-1] : BasePlayerPrefab[this.player-1]; //get the player prefab (or spawn Base prefab when in Debug Mode)
       
         spawnedPlayer = SpawnPlayer(player, spawnPoint); //Spawn Player method
 

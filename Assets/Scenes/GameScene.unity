@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 10673783}
   - component: {fileID: 10673785}
   - component: {fileID: 10673784}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HealthBackdrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 17064390}
   - component: {fileID: 17064392}
   - component: {fileID: 17064391}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TimePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 56487656}
   - component: {fileID: 56487658}
   - component: {fileID: 56487657}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 76934148}
   - component: {fileID: 76934150}
   - component: {fileID: 76934149}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,7 +518,7 @@ GameObject:
   - component: {fileID: 85323905}
   - component: {fileID: 85323907}
   - component: {fileID: 85323906}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: P2_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -595,7 +595,7 @@ GameObject:
   - component: {fileID: 199740957}
   - component: {fileID: 199740959}
   - component: {fileID: 199740958}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: P1_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -835,7 +835,7 @@ GameObject:
   - component: {fileID: 392738474}
   - component: {fileID: 392738473}
   - component: {fileID: 392738476}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1014,7 +1014,7 @@ GameObject:
   - component: {fileID: 602511705}
   - component: {fileID: 602511707}
   - component: {fileID: 602511706}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: P1_CharacterImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1179,7 +1179,7 @@ GameObject:
   - component: {fileID: 619672336}
   - component: {fileID: 619672338}
   - component: {fileID: 619672337}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: P2_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1256,7 +1256,7 @@ GameObject:
   - component: {fileID: 633907841}
   - component: {fileID: 633907843}
   - component: {fileID: 633907842}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HealthBackdrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1330,7 +1330,7 @@ GameObject:
   - component: {fileID: 650961308}
   - component: {fileID: 650961310}
   - component: {fileID: 650961309}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CurrentHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1414,7 +1414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6d517f7254523ce4c9348988a80aeaad, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.46
+      value: -0.35
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6d517f7254523ce4c9348988a80aeaad, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1473,7 +1473,7 @@ GameObject:
   - component: {fileID: 764079790}
   - component: {fileID: 764079792}
   - component: {fileID: 764079791}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1553,7 +1553,7 @@ GameObject:
   - component: {fileID: 924120446}
   - component: {fileID: 924120445}
   - component: {fileID: 924120444}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1672,7 +1672,7 @@ GameObject:
   - component: {fileID: 935183298}
   - component: {fileID: 935183300}
   - component: {fileID: 935183299}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HealthBackdrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1748,7 +1748,7 @@ GameObject:
   - component: {fileID: 968645082}
   - component: {fileID: 968645084}
   - component: {fileID: 968645083}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BasePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1827,7 +1827,7 @@ GameObject:
   - component: {fileID: 990450910}
   - component: {fileID: 990450909}
   - component: {fileID: 990450911}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TimeUntilStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1987,7 +1987,7 @@ GameObject:
   - component: {fileID: 1276719548}
   - component: {fileID: 1276719551}
   - component: {fileID: 1276719550}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RemainingTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2066,7 +2066,7 @@ GameObject:
   - component: {fileID: 1303842485}
   - component: {fileID: 1303842487}
   - component: {fileID: 1303842486}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: P2_CharacterImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2141,7 +2141,7 @@ GameObject:
   - component: {fileID: 1347658158}
   - component: {fileID: 1347658157}
   - component: {fileID: 1347658159}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: EndGameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2356,7 +2356,7 @@ GameObject:
   - component: {fileID: 1640916323}
   - component: {fileID: 1640916325}
   - component: {fileID: 1640916324}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CurrentHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2543,7 +2543,7 @@ GameObject:
   - component: {fileID: 1683686625}
   - component: {fileID: 1683686627}
   - component: {fileID: 1683686626}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CurrentHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2617,7 +2617,7 @@ GameObject:
   - component: {fileID: 1691535815}
   - component: {fileID: 1691535817}
   - component: {fileID: 1691535816}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Mask (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2691,7 +2691,7 @@ GameObject:
   - component: {fileID: 1694064923}
   - component: {fileID: 1694064925}
   - component: {fileID: 1694064924}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2766,7 +2766,7 @@ GameObject:
   - component: {fileID: 1715173003}
   - component: {fileID: 1715173002}
   - component: {fileID: 1715173001}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2855,7 +2855,7 @@ GameObject:
   - component: {fileID: 1840115450}
   - component: {fileID: 1840115449}
   - component: {fileID: 1840115448}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: EndGameUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2964,7 +2964,7 @@ GameObject:
   - component: {fileID: 1983002939}
   - component: {fileID: 1983002941}
   - component: {fileID: 1983002940}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Mask (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3038,7 +3038,7 @@ GameObject:
   - component: {fileID: 2129096578}
   - component: {fileID: 2129096580}
   - component: {fileID: 2129096579}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: P2_CharacterImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3170,6 +3170,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5723424448094879017, guid: ada5f4a2b9881974e9e1cdf3ba70845e,
         type: 3}
+      propertyPath: BasePlayerPrefab.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5723424448094879017, guid: ada5f4a2b9881974e9e1cdf3ba70845e,
+        type: 3}
       propertyPath: Player1SpawnPoint
       value: 
       objectReference: {fileID: 1481668453}
@@ -3192,8 +3197,7 @@ PrefabInstance:
         type: 3}
       propertyPath: BasePlayerPrefab
       value: 
-      objectReference: {fileID: 390537371922280665, guid: 12be0bf264e189447a33c1d38f3a122f,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5723424448094879017, guid: ada5f4a2b9881974e9e1cdf3ba70845e,
         type: 3}
       propertyPath: UIManager
@@ -3204,5 +3208,17 @@ PrefabInstance:
       propertyPath: Camera
       value: 
       objectReference: {fileID: 524629183}
+    - target: {fileID: 5723424448094879017, guid: ada5f4a2b9881974e9e1cdf3ba70845e,
+        type: 3}
+      propertyPath: BasePlayerPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 4727529448679902241, guid: 12182b04c6fe3654a96ea7829da70241,
+        type: 3}
+    - target: {fileID: 5723424448094879017, guid: ada5f4a2b9881974e9e1cdf3ba70845e,
+        type: 3}
+      propertyPath: BasePlayerPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 4727529448679902241, guid: 3b482ae8ba2348b43a463fd1610c8bc9,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ada5f4a2b9881974e9e1cdf3ba70845e, type: 3}

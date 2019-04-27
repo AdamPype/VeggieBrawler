@@ -232,6 +232,7 @@ MonoBehaviour:
   _useSpecialAttackMotion: 0
   _freezeSpecial: 0.3
   _shakeSpecial: 3
+  _isFlinched: 0
   Controller: {fileID: 0}
 --- !u!114 &3086120947688668918
 MonoBehaviour:

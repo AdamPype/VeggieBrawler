@@ -57,7 +57,7 @@ public class PlayerScript : MonoBehaviour
 
     private Coroutine _generalAttackCoroutine;
     //private float _flinchTimer = 0;
-    private bool _isFlinched=false;
+    [HideInInspector] public bool _isFlinched=false;
     private bool _isDead;
     private float _bulletDelayTimer;
 
