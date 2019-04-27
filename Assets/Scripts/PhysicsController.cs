@@ -25,9 +25,6 @@ public class PhysicsController : MonoBehaviour
     public bool IsJumping { get; set; }
     private float _notGroundedTimer;
 
-    public int StepInterval = 10;
-    public SoundManager Sounds;
-
     public Vector3 InputMovement { get; set; } = Vector3.zero;
     public bool IsKinematic { get => _rigidbody.isKinematic; set => _rigidbody.isKinematic = value; }
     public Vector3 Velocity { get => _velocity; set => _velocity = value; }
@@ -55,14 +52,6 @@ public class PhysicsController : MonoBehaviour
 
         LimitXZVelocity();
         DoMovement();
-
-        if (IsGrounded() && _velocity.x != 0 )
-        {
-            if (FixedTime.fixedFrameCount % StepInterval == 0)
-            {
-                Sounds.PlaySimple("Step", Random.Range(0.8f, 1.2f));
-            }
-        }
 
     }
 
