@@ -1060,7 +1060,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 89d3f90b1912a254180ad414f9683b44, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 79049e2a4bb3c6c48a69fbe889cbc3a5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2253,7 +2253,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ca23f50f210fa0b4bba00451ed782e6f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.386
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3211,7 +3211,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 89d3f90b1912a254180ad414f9683b44, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f534a44b0d3ec7241a7cf8fef914b555, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3318,7 +3318,7 @@ PrefabInstance:
     - target: {fileID: 5723424448094879017, guid: ada5f4a2b9881974e9e1cdf3ba70845e,
         type: 3}
       propertyPath: DebugMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5723424448094879017, guid: ada5f4a2b9881974e9e1cdf3ba70845e,
         type: 3}
